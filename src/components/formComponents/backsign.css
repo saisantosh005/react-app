@@ -1,0 +1,84 @@
+*{
+    /*border:2px solid red*/
+    
+}
+body{
+    background:white;
+    }.back-color{
+    color:white;
+    background:black;
+    height:40px;
+    display: flex;
+    align-items:center;
+    padding-left:20px;
+}
+.heading{
+    margin-left:40px;
+}
+
+.greetings{
+    width:100%;
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+}
+.form-class{
+    /*width:200px;*/
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.form-input{
+    width:200px;
+    height: 30px;
+    border: 2px solid black;
+    margin-bottom: 20px;
+}
+.form-submit-button{
+    width:60px;
+    height:30px;
+    border:2px solid black;
+    display: flex;
+    background:white;
+    align-items:center;
+    justify-content:center;
+    margin-bottom: 20px;
+}
+.disable-app{
+    width:100%;
+    display: flex;
+    justify-content:center;
+}
+.disable-input-section{
+    width:200px;
+    display: flex;
+    flex-direction:column;
+    margin-left:10px;
+    /*justify-content:center;*/
+    align-items:center;
+}
+.favoriteDessert{
+    height:300px;
+    width:100%;
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-around;
+}
+.visitedCities{
+    height:300px;
+    width:100%;
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-around;
+}
+.yourState{
+    height:100px;
+    width:100%;
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-around;
+}

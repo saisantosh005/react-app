@@ -1,0 +1,138 @@
+
+/*here*/
+*{
+ font-family: Arial, Helvetica, sans-serif;
+}
+
+.car-app{
+    width:800px;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.car{
+    width:500px;
+    padding:20px;
+    border-bottom:2px solid lightgrey;
+    margin:20px;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.car-no-and-cross{
+    width:600px;
+    padding:0px;
+    margin:0px;
+    display: flex;
+    justify-content:space-between;
+}
+.car-no{
+    font-size:30px;
+    margin:10px;
+}
+.cross{
+    color:red;
+    font-size:20px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.car-part{
+    width:400px;
+}
+
+.start-only{
+    color: white;
+    width:80px;
+    font-size:20px;
+    height:35px;
+    border-radius:5px;
+    background: #009900;
+    border:2px solid #00e64d;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.start-only:hover{
+        
+}
+.stop-only{
+    font-size:20px;
+    color: white;
+    width:80px;
+    height:35px;
+    border-radius:5px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    background:red;
+    border:2px solid #ff6666;
+}
+
+.accelerate-decelerate{
+    display: flex;
+    justify-content:space-between;
+}
+.accelerate{
+    width:150px;
+    height: 40px;
+    background:white;
+     border:2px solid #6699ff;
+    border-radius: 5px;
+    color: #6699ff;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.accelerate:hover{
+    background:  #1a66ff;
+    color:white;
+    border:3px solid  #6699ff;
+}
+
+.apply-break{
+    width:150px;
+    height: 40px;
+    background:white;
+    /*border:2px solid  #e60000;*/
+    border:2px solid #ff6666;
+    color:#ff6666;
+    /*color: #e60000;*/
+    border-radius: 5px;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.apply-break:hover{
+    background: #e60000;
+    color:white;
+    border:3px solid  #ff6666;
+}
+
+.add-car{
+    width:100px;
+    height: 45px;
+    margin:10px;
+    font-size:20px;
+    border-radius: 5px;
+    color:white;
+    background:#1a66ff;
+    display: flex;
+    justify-content:center;
+    align-items:center;
+}
+.add-car:hover{
+    border:3px solid #4da6ff;
+}
+.add-car-section{
+    width:700px;
+    display: flex;
+    flex-direction:column;
+    /*justify-content:flex-end;*/
+    align-items:flex-end;
+}
+p{
+    font-size:20px;
+}

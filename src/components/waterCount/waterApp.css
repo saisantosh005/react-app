@@ -1,0 +1,91 @@
+*{
+    /*border:2px solid red;*/
+    
+}
+.water-app{
+    width:100%;
+    height:450px;
+    display:flex;
+    justify-content:center;
+    
+}
+
+
+.over-all-app{
+    width:300px;
+    color:white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-around;
+    background: #3399ff;
+}
+.filled-part{
+    width:100%;
+    display: none;
+    background:whitesmoke;
+    display: flex;
+    background:white;
+    justify-content:center;
+    align-items:center;
+    
+    border-radius:0px 0px 30px 30px;
+    
+    
+}
+.remained-part{
+    background:grey;
+    display: flex;
+    background:white;
+    justify-content:center;
+    align-items:center;
+    border-radius:0px 0px 30px 30px;
+}
+.remained-part-color{
+    display: flex;
+    background:grey;
+    display: flex;
+    background:white;
+    justify-content:center;
+    align-items:center;
+    border-radius:0px 0px 30px 30px;
+}
+
+
+.main-jar{
+    width:150px;
+    height:200px;
+    color:#3399ff;
+    border:3px solid  #0059b3;
+    border:3px solid #004d99;
+    display: flex;
+    flex-direction:column;
+    background:white;
+    justify-content:center;
+    align-items:center;
+    border-radius:0px 0px 30px 30px;
+}
+.glasses-part{
+  
+    display: flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+     
+    
+}
+.glass{
+    margin:15px;
+    width: 35px;
+    height:60px;
+    color:#3399ff;
+    background:white;
+    border-radius:0px 0px 10px 10px;
+    border:3px solid #004d99;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+
+
