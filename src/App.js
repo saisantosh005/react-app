@@ -8,34 +8,70 @@ import {FormComponents}from './components/formComponents/index.js';
 import {CountriesDashboardApp} from'./components/project/countryDashboard/CountriesDashboardApp.js';
 import CountryDetails from './components/project/countryDetails/CountryDetails.js';
 import {EmojiGame} from './components/assignment-5/EmojiGame/EmojiGame.js';
+import {CounterApp} from './components/CounterApp/CounterApp.js';
+import {CreateToDoListMobx} from './components/MobxTodoList//TodoApp/TodoApp.js';
+import {EventListApp } from './components/EventListApp/EventApp/EventApp.js';
+import {TodoListApp} from './components/NewTodoListApp/TodoApp/TodoListApp.js';
+import {A } from './components/practice/Practice.js';
+
 // import {Home} from './home.js';
 // import Page1 from "./components/Page1";
 // import {CheckTheData} from'./components/CheckTheData/CheckTheData.js';
 
 import HomePage from "./components/HomePage";
 import Page1 from "./components/Page1";
-
 import "./App.css";
+import CounterPage from './components/CounterPage/index.js';
+
+
+
+// import {observable} from 'mobx';
+import {observer} from 'mobx-react';
+import themeStore from './stores/ThemeStore/index.js';
+
+// 8
+
+import {configure} from 'mobx';
+
+// configure ({enforceActions:true});
+
+// 8
+
+@observer//1
+
 class App extends React.Component{
-  state={
-        selectedTheme:"light",
+    
+    // @observable selectedTheme="light"
+    getCurrentTheme=()=>{
+        // return this.selectedTheme;
+        return themeStore.selectedTheme;
     }
+    // setCurrentTheme=(theme)=>{
+    //     // this.themeStore.selectedTheme=theme;
+    //     themeStore.setCurrentTheme(theme);
+    // }
     
     changeSelectedTheme=()=>{
-        this.setState({
-            selectedTheme:this.state.selectedTheme==="light"?"dark":"light",
-        });
+        // this.setState({
+        //     selectedTheme:
+        // });
+        themeStore.setCurrentTheme();
+        // if(this.getCurrentTheme()==="light"){
+        //     this.setCurrentTheme("dark")}
+        // else{
+        //     this.setCurrentTheme("light");
+        // }
     }
     static themeObject= {
         "light":{
-            "themeName":"light Mode",
+            "themeName":"Dark Mode",
             "background":"whitesmoke",
             "selectedBackgrounds":"white",
             color:"black",
             border:"lightgrey",
         },
         "dark":{
-            "themeName":"Dark Mode",
+            "themeName":"Light Mode",
             "selectedBackgrounds":"#223c54",
             "background":"#2a3c4d",
             color:"white",
@@ -47,14 +83,32 @@ class App extends React.Component{
         return (
             <Router basename={process.env.PUBLIC_URL}>
             <Switch>
+                <Route exact path="/counter-page">
+                    <CounterPage />
+                </Route>    
                 <Route exact path="/page-1">
                     <Page1 />
                 </Route>    
                 <Route path="/CarsList">
                     <CarsList />
                 </Route>
+                <Route path="/Practice">
+                    <A />
+                </Route>
+                
                 <Route path="/CreateToDoList">
                     <CreateToDoList />
+                </Route>
+                <Route path="/New-Todo-List">
+                    <TodoListApp />
+                </Route>
+                
+                <Route path="/Event-List-App">
+                    <EventListApp />
+                </Route>
+                
+                <Route path="/Mobx-todo-list">
+                    <CreateToDoListMobx />
                 </Route>
                 <Route path="/FormComponents">
                     <FormComponents heading="Form Components" />
@@ -66,10 +120,13 @@ class App extends React.Component{
                     <EmojiGame />
                 </Route>
                 <Route exact path="/country-dashboard-app">
-                    <CountriesDashboardApp themeObject={themeObject[this.state.selectedTheme]} changeSelectedTheme={this.changeSelectedTheme} />
+                    <CountriesDashboardApp  />
                 </Route>
                 <Route  exact path="/country-dashboard-app/details/:alpha3code">
-                    <CountryDetails themeObject={themeObject[this.state.selectedTheme]} changeSelectedTheme={this.changeSelectedTheme}/>
+                    <CountryDetails />
+                </Route>
+                <Route exact path="/Counter-app">
+                    <CounterApp />
                 </Route>
                 <Route path="/">
                     <HomePage />
@@ -81,7 +138,14 @@ class App extends React.Component{
 }
 
 export default App;
+//
+// themeObject={themeObject[this.getCurrentTheme()]} changeSelectedTheme={this.changeSelectedTheme}
+// themeObject={themeObject[this.getCurrentTheme()]} changeSelectedTheme={this.changeSelectedTheme}
+// 
 
+// export default observer(App);
+
+// <CountriesDashboardApp themeObject={themeObject[this.state.selectedTheme]} changeSelectedTheme={this.changeSelectedTheme} />
 // import React from "react";
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 

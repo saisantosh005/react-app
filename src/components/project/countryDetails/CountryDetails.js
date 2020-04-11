@@ -7,6 +7,11 @@ import {CountryDetailsDiv,Image,TheoryData,AllSpanTags,EachCountryDetails,CardDa
 import {ButtonSection} from '../buttons/eachButton.js';
 import {BackButtonSection,DashboardButton,BackButton} from './backButtonSection';
 /* global fetch*/
+
+import {observer} from 'mobx-react';
+import themeStore from '../../../stores/ThemeStore/index.js';
+
+@observer
 class CountryDetails extends React.Component{
     state={
         countryDetails:null,
@@ -27,6 +32,35 @@ class CountryDetails extends React.Component{
             }
         });
     }
+    
+    
+    
+    getCurrentTheme=()=>{
+        return themeStore.selectedTheme;
+    }
+ 
+    changeSelectedTheme=()=>{
+        themeStore.setCurrentTheme();
+    }
+    
+    static themeObject= {
+        "light":{
+            "themeName":"Dark Mode",
+            "background":"whitesmoke",
+            "selectedBackgrounds":"white",
+            color:"black",
+            border:"lightgrey",
+        },
+        "dark":{
+            "themeName":"Light Mode",
+            "selectedBackgrounds":"#223c54",
+            "background":"#2a3c4d",
+            color:"white",
+            border:"black",
+        }
+    };
+    
+    
     renderBorderCountries=(event)=>{
         let {history}=this.props;
         history.push(`/country-dashboard-app/details/${event.target.id}`);
@@ -47,22 +81,21 @@ class CountryDetails extends React.Component{
         let value;
         value = input.map((item)=>{
             return item.name;
+            
         });
         return value.join(',');
     }
     render(){
-        // console.log("one");
-        let {themeName}=this.props.themeObject;
-        let {changeSelectedTheme}=this.props;
+        let themeObject = CountryDetails.themeObject[this.getCurrentTheme()];
+        let themeName=themeObject.themeName;
         let {countryDetails,countries}=this.state;
-        
         return(this.state.countryDetails===null?null:
-        <CountryDetailsDiv className={`${themeName} over-all-card`} themeObject={this.props.themeObject}>
-            <Header className = {themeName} themeObject={this.props.themeObject}
-                    onChangeTheme={changeSelectedTheme} name={themeName} />
+        <CountryDetailsDiv className={`${themeName} over-all-card`} themeObject={themeObject}>
+            <Header className = {themeName} themeObject={themeObject}
+                    onChangeTheme={this.changeSelectedTheme} name={themeName} />
             <BackButtonSection>
-                <BackButton themeObject={this.props.themeObject} onClick={this.navigateBack} className={`card-back-button ${themeName}`}><MdArrowBack />Back</BackButton>
-                <DashboardButton themeObject={this.props.themeObject} className={`card-back-button ${themeName}`} onClick={this.navigateToDashBoard}>Dashboard</DashboardButton>
+                <BackButton themeObject={themeObject} onClick={this.navigateBack} className={`card-back-button ${themeName}`}><MdArrowBack />Back</BackButton>
+                <DashboardButton themeObject={themeObject} className={`card-back-button ${themeName}`} onClick={this.navigateToDashBoard}>Dashboard</DashboardButton>
             </BackButtonSection>
             <EachCountryDetails>
                 <Image className="card-image" src={countryDetails.flag} alt={`${countryDetails.name}'s flag`}/>
@@ -86,7 +119,7 @@ class CountryDetails extends React.Component{
                         <strong>Borders Countries: </strong><br/>
                         {countryDetails.borders!==""?
                         <ButtonSection >
-                            <Button themeObject={this.props.themeObject} countries = {countries} 
+                            <Button themeObject={themeObject} countries = {countries} 
                                 name={themeName} 
                                 valueId={countryDetails.borders} 
                                 countryChangeMethod={this.renderBorderCountries}/>

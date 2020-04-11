@@ -1,30 +1,31 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-
+// import tw from'tailwind.macro';
 import stores from '../../stores'
 const counterStore = stores.counterStore
 
 @observer
 class CounterPage extends Component {
   handleIncrement = () => {
-    counterStore.incrementCounter()
+    counterStore.incrementCounter();
   }
 
   handleDecrement = () => {
     if (counterStore.count !== 0) {
-      counterStore.decrementCounter()
+      counterStore.decrementCounter();
     }
   }
 
+
   render() {
     return (
-      <div>
-        <h1>{counterStore.count}</h1>
-        <button onClick={this.handleIncrement}>+</button>
-        <button onClick={this.handleDecrement}>-</button>
+      <div className="m-24">
+        <h1 className="m-10 " >{counterStore.count}</h1>
+        <button className="m-10" onClick={this.handleIncrement}>+</button>
+        <button className="m-10" onClick={this.handleDecrement}>-</button>
       </div>
-    )
+    );
   }
 }
 
-export default CounterPage
+export default CounterPage;
