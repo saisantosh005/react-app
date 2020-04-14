@@ -5,16 +5,6 @@ import { CounterButtonAndInputStyling,
         CounterTitleStyling,CounterAppStyling,
         Button,InputTagStyling} from './counterAppStyling';
 
-// import {CounterCount} from './Count';
-// type InputChange={
-// }{target:{value:number}}
-
-type InputEvent = React.ChangeEvent<HTMLInputElement>;
-// type OnchangeProps={
-    // onInputChange:Function;
-    // changeCountValue:(input:number)=>void
-// }<OnchangeProps>
-
 @observer
 class CounterApp extends Component{
     
@@ -27,7 +17,7 @@ class CounterApp extends Component{
     decrement=()=>{
         counterCount.onDecrement();
     }
-    onInputChange=(event:InputEvent)=>{
+    onInputChange=(event)=>{
         counterCount.ChangeCountValue(Number(event.target.value));
     }
     

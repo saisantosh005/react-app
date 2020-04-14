@@ -1,21 +1,21 @@
 import {observable,action} from 'mobx';
-type InputEvent = React.ChangeEvent<HTMLInputElement>;
+// type InputEvent = React.ChangeEvent<HTMLInputElement>;
 
 
-export type TodoType={
-    id:number;
-    title:string
-    isCompleted:boolean
-    isDisabled:boolean
-}
+// export type TodoType={
+//     id:number;
+//     title:string
+//     isCompleted:boolean
+//     isDisabled:boolean
+// }
 
 class Todo{
-    @observable id:number;
-    @observable title:string;
-    @observable isCompleted:boolean;
-    @observable isDisabled:boolean;
-    @observable isChanged:boolean;
-    constructor(props:TodoType){
+    @observable id;
+    @observable title;
+    @observable isCompleted;
+    @observable isDisabled;
+    @observable isChanged;
+    constructor(props){
         this.id=props.id;
         this.title=props.title;
         this.isCompleted=props.isCompleted;
@@ -36,7 +36,7 @@ class Todo{
     }
     
     @action.bound
-    onUpdateTodoTitle(event:InputEvent){
+    onUpdateTodoTitle(event){
         if(event.target.value!==""){
             this.title=event.target.value;
         }

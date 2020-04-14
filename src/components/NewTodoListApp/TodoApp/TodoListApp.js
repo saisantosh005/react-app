@@ -9,15 +9,9 @@ import {TodoAppMainScreen,TodoAppMainDiv,TodoTitle} from './todoAppStyling';
 import {Todo} from '../../../stores/models/Todo';
 // import themeStore from '../../../stores/ThemeStore/index.js';
 
-// type TodoList = {
-//     id
-// }
-// type TodoListApp
-
-
 @observer
 class TodoListApp extends React.Component{
-    onAddTodo=(event:React.KeyboardEvent)=>{
+    onAddTodo=(event)=>{
         todoStore.onAddTodo(event);
     }
     

@@ -7,14 +7,8 @@ import {Todo} from '../../../stores/models/Todo';
 import {EachTodoStyling,EachTodoCheckBoxStyling,
         EachTodoInput,EachTodoCrossStyling} from './eachTodoStyling';
 
-
-        
-type EachListProps= {
-    EachTodoData:Todo
-}
-
 @observer
-class EachTodo extends React.Component<EachListProps>{
+class EachTodo extends React.Component{
     @observable EachTodoData=this.props.todo;
     // @action.bound
     changeFocus=(event)=>{

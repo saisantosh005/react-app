@@ -8,20 +8,20 @@ import {AddEventStyling,
         InputNameStyle,InputLocationStyle,
         AddEventButtonStyling} from './addEventStyle';
 
-type InputEvent = React.ChangeEvent<HTMLInputElement>;
+
 
 @observer
 class AddEvent extends React.Component{
-    @observable eventName:string="";
-    @observable eventLocation:string="";
+    @observable eventName;
+    @observable eventLocation;
     
     // onChangeEventName=(event:{target:{value:string}})=>{
-    onChangeEventName=(event:InputEvent)=>{
+    onChangeEventName=(event)=>{
         this.eventName=event.target.value;
     }
     
     // onChangeEventLocation=(event:{target:{value:string}})=>{
-    onChangeEventLocation=(event:InputEvent)=>{
+    onChangeEventLocation=(event)=>{
         this.eventLocation=event.target.value;
     }
     

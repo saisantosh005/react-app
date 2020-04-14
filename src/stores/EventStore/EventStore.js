@@ -9,20 +9,20 @@ import EventStoreModel,{EventModelType} from '../models/EventStoreModel';
 // }
 
 class EventStore{
-    @observable EventList:Array<EventStoreModel>=[];
-    @observable count:number=0;
+    @observable EventList=[];
+    @observable count=0;
     constructor(){
         this.EventList
         this.count
     }
     @action.bound 
-    onDeleteEvent(input:number){
+    onDeleteEvent(input){
         this.EventList=this.EventList.filter((item)=>item.id!=input);
     }
     @action.bound
-    onAddEvent(eventName:string,eventLocation:string){
+    onAddEvent(eventName,eventLocation){
         if(eventName!==""&&eventLocation!==""){
-            const eventModel:EventModelType = new EventStoreModel({
+            const eventModel = new EventStoreModel({
                 id:this.count++,
                 eventName:eventName,
                 eventLocation:eventLocation,

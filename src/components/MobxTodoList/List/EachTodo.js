@@ -1,10 +1,10 @@
 import React from 'react';
 import {observable} from 'mobx';
 import {observer} from'mobx-react';
+
+
+
 @observer
-
-
-
 class NewList extends React.Component{
 
     @observable className="created-list-input-box";

@@ -13,31 +13,23 @@ import { EachEventStyling,
          EditInputLocationStyle } from './eventstyle';
 
 
-type InputEvent = React.ChangeEvent<HTMLInputElement>;
-// type InputEventClick = React.MouseEvent<HTMLDivElement>;
-type EventPropsIt= {
-    // eventName:string
-    // eventLocation:string
-    eventModel:EventStoreModel
-}
-
 @observer
-class Event extends React.Component<EventPropsIt>{
+class Event extends React.Component{
     
     @observable eventName=this.props.eventModel.eventName;
     @observable eventLocation=this.props.eventModel.eventLocation;
     @observable isEditEvent=false;
     
     // onDeleteEvent=(event:{target:{id:number}})=>{
-    onDeleteEvent=(event:InputEvent)=>{
+    onDeleteEvent=(event)=>{
         eventStore.onDeleteEvent(Number(event.target.id));
     }
     // onUpdateEventLocation=(event:{target:{value:string}})=>{
-    onUpdateEventLocation=(event:InputEvent)=>{
+    onUpdateEventLocation=(event)=>{
         this.eventLocation=event.target.value;
     }
     // onUpdateEventName=(event:{target:{value:string}})=>{
-    onUpdateEventName=(event:InputEvent)=>{
+    onUpdateEventName=(event)=>{
         this.eventName=event.target.value;
     }
     

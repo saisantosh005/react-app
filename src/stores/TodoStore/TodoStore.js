@@ -16,15 +16,15 @@ class TodoStore{
     }
     
     @action.bound
-    onAddTodo(event:React.KeyboardEvent){
+    onAddTodo(event){
         if(event.keyCode===13&&event.target.value.trim()!==""){
-            const TodoObject:TodoType={
+            const TodoObject={
                     id:this.count+=1,
                     title:event.target.value,
                     isCompleted:false,
                     isDisabled:false,
             }
-            const newTodoModel:Todo = new Todo(TodoObject);
+            const newTodoModel = new Todo(TodoObject);
             this.listOfTodos.push(newTodoModel);
             event.target.value="";
         }   
@@ -52,7 +52,7 @@ class TodoStore{
     }
     
     @action.bound
-    onChangeSelectedFilter(event:){
+    onChangeSelectedFilter(event){
         this.selectedFilter=event.target.id;
     }
 }

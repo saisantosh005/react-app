@@ -1,16 +1,9 @@
 import React from 'react';
 import {TodoFooterStyling,HoverDiv,UnderLine} from'./footerStyling';
 import {Todo} from '../../../stores/models/Todo';
-// ,TodoType
-type TodoFooterProps={
-    listOfTodos:Array<Todo>
-    activeTodosCount:number
-    onChangeSelectedFilter:()=>void
-    onClearCompleted:()=>void
-}
 
 
-class TodoFooter extends React.Component<TodoFooterProps>{
+class TodoFooter extends React.Component{
     render(){
         let {listOfTodos} = this.props;
         let countOfCompleted=0;

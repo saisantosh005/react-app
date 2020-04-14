@@ -1,12 +1,12 @@
 import {action,observable} from 'mobx';
 
 class CounterCount {
-    @observable count:number;
+    @observable count;
     constructor(){
         this.count=0;
     }
     @action.bound 
-    ChangeCountValue(input:number){
+    ChangeCountValue(input){
         this.count=input;
     }
     @action.bound 
