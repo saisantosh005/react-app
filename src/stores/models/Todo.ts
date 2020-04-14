@@ -1,12 +1,21 @@
 import {observable,action} from 'mobx';
+type InputEvent = React.ChangeEvent<HTMLInputElement>;
+
+
+export type TodoType={
+    id:number;
+    title:string
+    isCompleted:boolean
+    isDisabled:boolean
+}
 
 class Todo{
-    @observable id;
-    @observable title;
-    @observable isCompleted;
-    @observable isDisabled;
-    @observable isChanged;
-    constructor(props){
+    @observable id:number;
+    @observable title:string;
+    @observable isCompleted:boolean;
+    @observable isDisabled:boolean;
+    @observable isChanged:boolean;
+    constructor(props:TodoType){
         this.id=props.id;
         this.title=props.title;
         this.isCompleted=props.isCompleted;
@@ -27,7 +36,7 @@ class Todo{
     }
     
     @action.bound
-    onUpdateTodoTitle(event){
+    onUpdateTodoTitle(event:InputEvent){
         if(event.target.value!==""){
             this.title=event.target.value;
         }
@@ -35,7 +44,6 @@ class Todo{
             alert("todo should not be empty");
         }
     }
-
 }
 export {Todo};
 

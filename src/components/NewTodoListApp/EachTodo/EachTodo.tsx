@@ -1,13 +1,21 @@
 import React from 'react';
-import {EachTodoStyling,EachTodoCheckBoxStyling,
-        EachTodoInput,EachTodoCrossStyling} from './eachTodoStyling.js';
-import {observable,action} from 'mobx';
-
+// import {observable,action} from 'mobx';
+import {observable} from 'mobx';
 import {observer} from 'mobx-react';
+
+import {Todo} from '../../../stores/models/Todo';
+import {EachTodoStyling,EachTodoCheckBoxStyling,
+        EachTodoInput,EachTodoCrossStyling} from './eachTodoStyling';
+
+
+        
+type EachListProps= {
+    EachTodoData:Todo
+}
+
 @observer
-class EachTodo extends React.Component{
-    
-    @observable todo=this.props.todo;
+class EachTodo extends React.Component<EachListProps>{
+    @observable EachTodoData=this.props.todo;
     // @action.bound
     changeFocus=(event)=>{
         if(event.keyCode===13){

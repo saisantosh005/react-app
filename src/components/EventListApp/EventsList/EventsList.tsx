@@ -1,14 +1,18 @@
 import React from 'react';
-import {Event} from '../Event/Event.js';
-import{EventListDivStyling,NoOfEventsStyling} from './eventListStyle.js';
 import {observer} from 'mobx-react';
+import {eventStore} from  '../../../stores/EventStore/EventStore';
+import {Event} from '../Event/Event';
+import{EventListDivStyling,NoOfEventsStyling} from './eventListStyle';
 
-import {eventStore} from  '../../../stores/EventStore/EventStore.js';
+
+// type Props = {
+    
+// }
 @observer
 class EventsList extends React.Component{
     render(){
         let eventList =eventStore.EventList;
-        const listOFEvents = eventList.map((item)=><Event key={item} eventModel ={item}/>);
+        const listOFEvents = eventList.map((item)=><Event key={item} eventModel={item}/>);
         return(eventList.length>0&&
             <EventListDivStyling>
                 <NoOfEventsStyling>Number of Events: {eventList.length}</NoOfEventsStyling>

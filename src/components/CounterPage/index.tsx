@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-import { observer, inject } from 'mobx-react'
-// import tw from'tailwind.macro';
-import stores from '../../stores'
-const counterStore = stores.counterStore
+import React, { Component } from 'react';
+import { observer } from 'mobx-react';
+import stores from '../../stores';
+const counterStore = stores.counterStore;
 
 type Props = {
   initialCount: number
@@ -10,7 +9,7 @@ type Props = {
 
 @observer
 class CounterPage extends Component<Props> {
-  functionCalling
+  // functionCalling
 
   handleIncrement = () => {
     counterStore.incrementCounter();

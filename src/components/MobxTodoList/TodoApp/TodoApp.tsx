@@ -2,36 +2,50 @@ import React from 'react';
 import {observable} from 'mobx';
 import {observer} from 'mobx-react';
 import '../index.css';
-import {NewList} from'../List/EachTodo.js';
+import {NewList} from'../List/EachTodo';
 
+type InputEvent = React.MouseEvent<HTMLDivElement>;
 let count = 0;
+type ListItem= {
+    id:number;
+    className:string,
+    isChecked:boolean,
+}
+
 @observer
 class CreateToDoListMobx extends React.Component{
+    @observable className:string="each-list-item";
+    @observable listIdOfToList:Array<object>=[];
+    @observable valueTosend:string="";
+    @observable no:number=0;
+    
     // constructor(props){
     //     super(props);
-    //     this.state={
-    //         className:"each-list-item",
-    //         listIdOfToList:[],
-    //         valueTosend:"",
-    //         no:0,
-    //     };
+    //     this.className="each-list-item";
+    //     this.listIdOfToList=[];
+    //     this.valueTosend="";
+    //     this.no=0;    
     // }
-    
-    @observable className="each-list-item";
-    @observable listIdOfToList=[];
-    @observable valueTosend="";
-    @observable no=0;
+    // @observable className="each-list-item";
+    // @observable listIdOfToList=[];
+    // @observable valueTosend="";
+    // @observable no=0;
     
   //0ok-------done
     formListItem=(event)=>{
         if(event.target.value!==""){
             if(event.keyCode===13){
-                this.listIdOfToList.push(
-                    { 
+                const listObject:object={
                     className:"each-list-item",
                     isChecked:false,
                     id:count,
-                });
+                }
+                this.listIdOfToList.push(listObject);
+                //     { 
+                //     className:"each-list-item",
+                //     isChecked:false,
+                //     id:count,
+                // }
                 this.listIdOfToList=this.listIdOfToList,
                 this.valueTosend=event.target.value,
                 event.target.value="";
@@ -40,7 +54,7 @@ class CreateToDoListMobx extends React.Component{
         }
     }
     // 0ok
-    deleteListItem=(event)=>{
+    deleteListItem=(event:InputEvent)=>{
         //
         this.listIdOfToList.forEach((item,index)=>{
             if(Number(event.target.className)===Number(item.id)){
@@ -50,8 +64,10 @@ class CreateToDoListMobx extends React.Component{
         });
     }
     //0ok
-    appendChecked=(input)=>{
-        this.listIdOfToList.forEach((item)=>{
+    appendChecked=(input:number)=>{
+        this.listIdOfToList.forEach((item:ListItem)=>{
+            let id:number
+            let isChecked:boolean
             if(Number(input)===Number(item.id)){
                 item.isChecked=true;
                     this.listIdOfToList=this.listIdOfToList;

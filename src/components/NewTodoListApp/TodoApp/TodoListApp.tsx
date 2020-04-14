@@ -1,15 +1,23 @@
 import React from 'react';
-import {observable,reaction} from 'mobx';
+import {reaction} from 'mobx';
 import {observer} from'mobx-react';
-import {EachTodo} from '../EachTodo/EachTodo.js';
-import {TodoAppMainScreen,TodoAppMainDiv,TodoTitle} from './todoAppStyling.js';
-import {AddTodo} from '../AddTodo/AddTodo.js';
-import {TodoFooter} from '../Footer/TodoFooter.js';
-import todoStore from '../../../stores/TodoStore/TodoStore.js';
+import todoStore from '../../../stores/TodoStore/TodoStore';
+import {EachTodo} from '../EachTodo/EachTodo';
+import {AddTodo} from '../AddTodo/AddTodo';
+import {TodoFooter} from '../Footer/TodoFooter';
+import {TodoAppMainScreen,TodoAppMainDiv,TodoTitle} from './todoAppStyling';
+import {Todo} from '../../../stores/models/Todo';
 // import themeStore from '../../../stores/ThemeStore/index.js';
+
+// type TodoList = {
+//     id
+// }
+// type TodoListApp
+
+
 @observer
 class TodoListApp extends React.Component{
-    onAddTodo=(event)=>{
+    onAddTodo=(event:React.KeyboardEvent)=>{
         todoStore.onAddTodo(event);
     }
     
@@ -17,9 +25,9 @@ class TodoListApp extends React.Component{
         todoStore.onRemoveTodo(event);
     }
     
-    onCompletedTodo=(event)=>{
-        todoStore.onCompletedTodo(event);
-    }
+    // onCompletedTodo=(event)=>{
+    //     todoStore.onCompletedTodo(event);
+    // }
     
     
     onClearCompleted=()=>{ 

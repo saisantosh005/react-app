@@ -2,18 +2,11 @@ import React from 'react';
 import {observable} from 'mobx';
 import {observer} from'mobx-react';
 @observer
+
+
+
 class NewList extends React.Component{
-    // constructor(props){
-    //     super(props);
-    //     this.state={
-    //         className:"created-list-input-box",
-    //         removeElementClass:"remove-element",
-    //         checkBoxClassName:'check-box',
-    //         valueId:this.props.valueSend,
-    //         disabled:false,
-            
-    //     };
-    // }
+
     @observable className="created-list-input-box";
     @observable removeElementClass="remove-element";
     @observable checkBoxClassName='check-box';

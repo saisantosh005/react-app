@@ -1,3 +1,8 @@
+
+// import {configure} from 'mobx';
+
+import {observer} from 'mobx-react';
+
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
@@ -8,11 +13,11 @@ import {FormComponents}from './components/formComponents/index.js';
 import {CountriesDashboardApp} from'./components/project/countryDashboard/CountriesDashboardApp.js';
 import CountryDetails from './components/project/countryDetails/CountryDetails.js';
 import {EmojiGame} from './components/assignment-5/EmojiGame/EmojiGame.js';
-import {CounterApp} from './components/CounterApp/CounterApp.js';
-import {CreateToDoListMobx} from './components/MobxTodoList//TodoApp/TodoApp.js';
-import {EventListApp } from './components/EventListApp/EventApp/EventApp.js';
-import {TodoListApp} from './components/NewTodoListApp/TodoApp/TodoListApp.js';
-import {A } from './components/practice/Practice.js';
+import {CounterApp} from './components/CounterApp/CounterApp';
+import {CreateToDoListMobx} from './components/MobxTodoList/TodoApp/TodoApp';
+import {EventListApp } from './components/EventListApp/EventApp/EventApp';
+import {TodoListApp} from './components/NewTodoListApp/TodoApp/TodoListApp';
+import {A} from './components/practice/Practice';
 
 // import {Home} from './home.js';
 // import Page1 from "./components/Page1";
@@ -21,65 +26,45 @@ import {A } from './components/practice/Practice.js';
 import HomePage from "./components/HomePage";
 import Page1 from "./components/Page1";
 import "./App.css";
-import CounterPage from './components/CounterPage/index.js';
-
-
+import CounterPage from './components/CounterPage/index';
 
 // import {observable} from 'mobx';
-import {observer} from 'mobx-react';
-import themeStore from './stores/ThemeStore/index.js';
+// import themeStore from './stores/ThemeStore/index';
 
 // 8
-
-import {configure} from 'mobx';
 
 // configure ({enforceActions:true});
 
 // 8
 
 @observer//1
-
 class App extends React.Component{
-    
-    // @observable selectedTheme="light"
-    getCurrentTheme=()=>{
-        // return this.selectedTheme;
-        return themeStore.selectedTheme;
-    }
-    // setCurrentTheme=(theme)=>{
-    //     // this.themeStore.selectedTheme=theme;
-    //     themeStore.setCurrentTheme(theme);
+    // getCurrentTheme=()=>{
+    //     return themeStore.selectedTheme;
     // }
     
-    changeSelectedTheme=()=>{
-        // this.setState({
-        //     selectedTheme:
-        // });
-        themeStore.setCurrentTheme();
-        // if(this.getCurrentTheme()==="light"){
-        //     this.setCurrentTheme("dark")}
-        // else{
-        //     this.setCurrentTheme("light");
-        // }
-    }
-    static themeObject= {
-        "light":{
-            "themeName":"Dark Mode",
-            "background":"whitesmoke",
-            "selectedBackgrounds":"white",
-            color:"black",
-            border:"lightgrey",
-        },
-        "dark":{
-            "themeName":"Light Mode",
-            "selectedBackgrounds":"#223c54",
-            "background":"#2a3c4d",
-            color:"white",
-            border:"black",
-        }
-    };
+    // changeSelectedTheme=()=>{
+    //     themeStore.setCurrentTheme();
+    // }
+    // static themeObject= {
+    //     "light":{
+    //         "themeName":"Dark Mode",
+    //         "background":"whitesmoke",
+    //         "selectedBackgrounds":"white",
+    //         color:"black",
+    //         border:"lightgrey",
+    //     },
+    //     "dark":{
+    //         "themeName":"Light Mode",
+    //         "selectedBackgrounds":"#223c54",
+    //         "background":"#2a3c4d",
+    //         color:"white",
+    //         border:"black",
+    //     }
+    // };
+    
     render(){
-        let themeObject=App.themeObject;
+        // let themeObject=App.themeObject;
         return (
             <Router basename={process.env.PUBLIC_URL}>
             <Switch>
@@ -138,6 +123,7 @@ class App extends React.Component{
 }
 
 export default App;
+
 //
 // themeObject={themeObject[this.getCurrentTheme()]} changeSelectedTheme={this.changeSelectedTheme}
 // themeObject={themeObject[this.getCurrentTheme()]} changeSelectedTheme={this.changeSelectedTheme}

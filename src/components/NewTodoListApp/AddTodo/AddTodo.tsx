@@ -1,19 +1,17 @@
 import React from 'react';
-import {TodoAppFixedDiv,MainInput,DropDown} from './addTodoStyle.js';
-import {observable} from 'mobx';
+// import {observable} from 'mobx';
 import {observer} from 'mobx-react';
-import todoStore from '../../../stores/TodoStore/TodoStore.js';
+import todoStore from '../../../stores/TodoStore/TodoStore';
+import {TodoAppFixedDiv,MainInput,DropDown} from './addTodoStyle';
+
+type TodoProps={
+    // onAddTodo:Function
+    // onStudentAdd:(name:string,gender:string)=>void
+    onAddTodo:()=>void
+}
 
 @observer
-class AddTodo extends React.Component{
-    // @observable todoTitle ="";
-    // onChangeInput=(event)=>{
-    //     if(event.target.value!==""){
-    //         if(event.target.value.trim()!==""){
-    //             this.todoTitle=event.target.value.trim();        
-    //         }
-    //     }
-    // }
+class AddTodo extends React.Component<TodoProps>{
     changeSelectedfilter=()=>{
         {todoStore.selectedFilter!=="All"?todoStore.selectedFilter="All":todoStore.selectedFilter=""}
     }

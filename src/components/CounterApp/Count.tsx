@@ -1,21 +1,23 @@
 import {action,observable} from 'mobx';
 
 class CounterCount {
-    @observable count;
+    @observable count:number;
     constructor(){
         this.count=0;
     }
     @action.bound 
-    ChangeCountValue(input){
+    ChangeCountValue(input:number){
         this.count=input;
     }
-    @action.bound onIncrement(){
+    @action.bound 
+    onIncrement(){
         if(isNaN(this.count)){
             this.count=0;
         }
         this.count=this.count+1;    
     }
-    @action.bound onDecrement(){
+    @action.bound
+    onDecrement(){
         if(isNaN(this.count)){
          this.count=0;
         }
@@ -23,7 +25,8 @@ class CounterCount {
     }
 }
 const counterCount = new CounterCount();
-export {counterCount};
+export {counterCount,CounterCount};
+
 
 
 

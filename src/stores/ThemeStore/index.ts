@@ -4,7 +4,7 @@ class ThemeStore{
     constructor(){
         this.selectedTheme="light";
     }
-    // @action.bound 
+    @action.bound 
     setCurrentTheme(){
         if(this.selectedTheme==="light"){
             this.selectedTheme="dark";

@@ -1,26 +1,43 @@
 import React from 'react';
-import {observable,action} from 'mobx';
+import {observable} from 'mobx';
+import {observer} from 'mobx-react';
+
+import {eventStore} from  '../../../stores/EventStore/EventStore';
+import EventStoreModel,{EventModelType} from '../../../stores/models/EventStoreModel';
+
 import { EachEventStyling,
          EachEventInputDivStyle,InputNameStyle,
          InputLocationStyle,
          EditButtonStyling,DeleteButtonStyling,
          EachEventButtonStyling,EditInputNameStyle,
-         EditInputLocationStyle } from './eventstyle.js';
-import {eventStore} from  '../../../stores/EventStore/EventStore.js';
-import {observer} from 'mobx-react';
+         EditInputLocationStyle } from './eventstyle';
+
+
+type InputEvent = React.ChangeEvent<HTMLInputElement>;
+// type InputEventClick = React.MouseEvent<HTMLDivElement>;
+type EventPropsIt= {
+    // eventName:string
+    // eventLocation:string
+    eventModel:EventStoreModel
+}
+
 @observer
-class Event extends React.Component{
+class Event extends React.Component<EventPropsIt>{
+    
     @observable eventName=this.props.eventModel.eventName;
     @observable eventLocation=this.props.eventModel.eventLocation;
     @observable isEditEvent=false;
     
-    onDeleteEvent=(event)=>{
-        eventStore.onDeleteEvent(event.target.id);
+    // onDeleteEvent=(event:{target:{id:number}})=>{
+    onDeleteEvent=(event:InputEvent)=>{
+        eventStore.onDeleteEvent(Number(event.target.id));
     }
-    onUpdateEventLocation=()=>{
+    // onUpdateEventLocation=(event:{target:{value:string}})=>{
+    onUpdateEventLocation=(event:InputEvent)=>{
         this.eventLocation=event.target.value;
     }
-    onUpdateEventName=()=>{
+    // onUpdateEventName=(event:{target:{value:string}})=>{
+    onUpdateEventName=(event:InputEvent)=>{
         this.eventName=event.target.value;
     }
     
@@ -51,8 +68,14 @@ class Event extends React.Component{
                     </EachEventInputDivStyle>
                     :
                     <EachEventInputDivStyle>
-                        <EditInputNameStyle onChange={this.onUpdateEventName} value={this.eventName} placeholder={"Event Name"}/>
-                        <EditInputLocationStyle onChange={this.onUpdateEventLocation} value={this.eventLocation} placeholder={"Event Location"}/>
+                        <EditInputNameStyle 
+                            onChange={this.onUpdateEventName}
+                            value={this.eventName}
+                            placeholder={"Event Name"}/>
+                        <EditInputLocationStyle
+                            onChange={this.onUpdateEventLocation} 
+                            value={this.eventLocation}
+                            placeholder={"Event Location"}/>
                     </EachEventInputDivStyle>
                  }
                     {this.isEditEvent===false?<EachEventButtonStyling>

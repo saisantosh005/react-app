@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
 import tw  from 'tailwind.macro';
 
-
-
 const CounterAppStyling=styled.div`
             ${tw `flex flex-col justify-center w-screen h-screen items-center`}`;
 

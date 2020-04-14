@@ -1,6 +1,6 @@
-import React from 'react';
+// import React from 'react';
 import {observable,action,computed,reaction } from 'mobx';
-import {Todo} from '../models/Todo.js';
+import {Todo,TodoType} from '../models/Todo';
 
 // import {observer} from 'mobx-react';
 // @observer
@@ -16,14 +16,15 @@ class TodoStore{
     }
     
     @action.bound
-    onAddTodo(){
+    onAddTodo(event:React.KeyboardEvent){
         if(event.keyCode===13&&event.target.value.trim()!==""){
-            const newTodoModel = new Todo({
+            const TodoObject:TodoType={
                     id:this.count+=1,
                     title:event.target.value,
                     isCompleted:false,
                     isDisabled:false,
-            });
+            }
+            const newTodoModel:Todo = new Todo(TodoObject);
             this.listOfTodos.push(newTodoModel);
             event.target.value="";
         }   
@@ -51,7 +52,7 @@ class TodoStore{
     }
     
     @action.bound
-    onChangeSelectedFilter(event){
+    onChangeSelectedFilter(event:){
         this.selectedFilter=event.target.id;
     }
 }
