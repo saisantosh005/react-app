@@ -52,6 +52,9 @@ function Page1() {
             <li>
                 <Link to="/WaterCountApp">WaterCountApp</Link>
             </li>
+            <li>
+                <Link to="/Grid-memory-game">Grid Memory Game</Link>
+            </li>
             
         </ul>
       

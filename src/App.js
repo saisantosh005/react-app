@@ -18,6 +18,7 @@ import {CreateToDoListMobx} from './components/MobxTodoList/TodoApp/TodoApp';
 import {EventListApp } from './components/EventListApp/EventApp/EventApp';
 import {TodoListApp} from './components/NewTodoListApp/TodoApp/TodoListApp';
 import {A} from './components/practice/Practice';
+import {GridMemoryGame} from './components/GridMemoryGameApp/GridMemoryGame/GridMemoryApp.js';
 
 // import {Home} from './home.js';
 // import Page1 from "./components/Page1";
@@ -113,6 +114,10 @@ class App extends React.Component{
                 <Route exact path="/Counter-app">
                     <CounterApp />
                 </Route>
+                <Route exact path="/Grid-memory-game">
+                    <GridMemoryGame />
+                </Route>
+                
                 <Route path="/">
                     <HomePage />
                 </Route>

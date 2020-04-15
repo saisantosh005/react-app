@@ -15,7 +15,7 @@ class CountriesDashboardApp extends React.Component{
         super(props);
         this.state={
             selectedRegion:"All",
-             searchText:"",
+            searchText:"",
             selectedTheme:true,
             countries:'',
             commonFetchData:"",
