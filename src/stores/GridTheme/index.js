@@ -5,10 +5,12 @@ class ThemeStore {
     @observable selectedTheme;
     @observable object = {
         light:{
-            background:"blue",
+            background:"#1a202c",
+            color:"white",
         },
         dark:{
-            background:"red",
+            background:"white",
+            color:"black",
         }
     }
     constructor(){
@@ -16,37 +18,9 @@ class ThemeStore {
     }
     @action.bound
     changeTheme(){
-        // console.log("two");
         this.selectedTheme==="light"?this.selectedTheme="dark":this.selectedTheme="light";
-        console.log(this.selectedTheme);
-        console.log(this.object[this.selectedTheme]);
-   
     }
 }
 const themeStore =new ThemeStore();
 export default themeStore;
-
-
-
-
-// import { observable,action} from 'mobx';
-// class ThemeStore{
-//     @observable selectedTheme;
-//     constructor(){
-//         this.selectedTheme="light";
-//     }
-//     @action.bound 
-//     setCurrentTheme(){
-//         if(this.selectedTheme==="light"){
-//             this.selectedTheme="dark";
-//         }
-//         else{
-//             this.selectedTheme="light";
-//         }
-//     }
-// }
-
-// const themeStore =new ThemeStore();
-// export default themeStore;
-
 

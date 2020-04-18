@@ -1,78 +1,102 @@
-import {observable} from 'mobx';
-
+import {observable,action} from 'mobx';
 import GridGameModel from '../models/GridGameModel.js';
+import gridDataObject from '../Json/Json.json';
+
 class GridStore{
-    @observable level=0
-    @observable topLevel=0
-    @observable listOfGridModel=[];
-    @observable isGameComleted=false
-    @observable selectedCellsCount=0
-    
+    @observable level
+    @observable topLevel
+    @observable listOfGridModel=[]
+    @observable isGameComleted
+    @observable selectedCellsCount
+    @observable isOk;
+    constructor(props){
+        this.level=0;
+        this.topLevel=0;
+        this.listOfGridModel=[];
+        this.isGameComleted=false;
+        this.selectedCellsCount=0;
+        this.isOk=0;
+    }
+    // gridDataObject=
     onCellClick=()=>{
         this.incrementSelectedCellsCount();
+        if(this.selectedCellsCount===(this.level+3)){
+            this.gotoNextLevelAndUpdateCells();
+        }
+        if(this.level===7){
+            this.isGameComleted=true;
+        }
     }
-    setGridCells=()=>{
-        let count=0;
+    
+    @action.bound
+    setGridCells(input){
+        let data = gridDataObject[this.level];
         this.listOfGridModel=[];
-        for(let i=0;i<3;i++){
-            const gridObject =new GridGameModel({
+        for(let i=0;i<((data.gridSize)**2);i++){
+            const object = {
                 id:i,
                 isHidden:false,
-            });
+            };
+            if(i<data.hiddenCellCount){
+                object.id="t";
+                object.isHidden=true;
+            }
+            const gridObject = new GridGameModel(object);
             this.listOfGridModel.push(gridObject);
         }
-        let o =[]
-        for(let i=this.listOfGridModel.length;i>0;i--){
-            if(i<3){
-             this.listOfGridModel[i].isHidden=true   
-            }
+        for(let i =this.listOfGridModel.length-1;i>0;i--){
+            const j = Math.floor(Math.random()*(i+1));
+            [this.listOfGridModel[i],this.listOfGridModel[j]]=[this.listOfGridModel[j],this.listOfGridModel[i]];
         }
-            // shuffleEmojis=()=>{
-            //     let {emojis} =this.state;
-            //     for(let i=emojis.length-1;i>0;i--){
-            //     const j = Math.floor(Math.random()*(i+1));
-            // [emojis[i],emojis[j]]=[emojis[j],emojis[i]];
-    // }
-    
-            // const t = Math.floor(Math.random()*(i+1));
-            // for(let j=0;j<o.length;j++){
-            //     if(o[j]!==t&&count<3){
-            //         o[i]=t;
-            //         console.log(t);
-            //         count++
-            //         this.listOfGridModel[j].isHidden=true
-            //     }
-            // }
-                
-        // }
-        return this.listOfGridModel;
     }
     
-    gotoNextLevelAndUpdateCells=()=>{
-        
+    @action.bound
+    gotoNextLevelAndUpdateCells(){
+        this.level++;
+        this.selectedCellsCount=0;
+        this.setGridCells();   
     }
-    gotoIntialLevelAndUpdateCells=()=>{
-        
+    
+    @action.bound
+    gotoIntialLevelAndUpdateCells(){
+        this.isGameComleted=false;
+        this.level=0;
+        this.setGridCells();
     }
-    resetSelectedCellsCount=()=>{
+    
+    @action.bound
+    resetSelectedCellsCount(){
         this.selectedCellsCount=0;
     }
-    incrementSelectedCellsCount=()=>{
+    
+    @action.bound
+    incrementSelectedCellsCount(){
         this.selectedCellsCount++;
     }
-    onPlayAgainClick=()=>{
-        this.level=0;
-    }
-    resetGame=()=>{
-        this.level=0;
-        alert("reset");
-    }
-    setTopLevel=()=>{
+    @action.bound
+    onPlayAgainClick(){
         
+        if(this.level>this.topLevel){
+            this.setTopLevel();
+        }
+        this.gotoIntialLevelAndUpdateCells();
+        this.resetSelectedCellsCount();
+        
+        
+        // this.resetGame();
+    }
+    @action.bound
+    resetGame(){
+        this.setTopLevel();
+        this.gotoIntialLevelAndUpdateCells();
+        this.resetSelectedCellsCount();
+        return Math.random()
+    }
+    @action.bound
+    setTopLevel(){
+        this.topLevel=this.level;                       
     }
 }
 
 const gridStore = new GridStore();
 export default gridStore;
-
-array.sort(() => Math.random() - 0.5)
