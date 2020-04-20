@@ -13,6 +13,9 @@ function Page1() {
         // </div>
         <ul className="m-20 font-bold leading-8">
             <li>
+                <Link to="/Rest-api-practice">Rest Api</Link>
+            </li>
+            <li>
                 <Link to="/New-Todo-List">New To do list App</Link>
             </li>
             
@@ -52,6 +55,7 @@ function Page1() {
             <li>
                 <Link to="/WaterCountApp">WaterCountApp</Link>
             </li>
+            
             <li>
                 <Link to="/Grid-memory-game">Grid Memory Game</Link>
             </li>

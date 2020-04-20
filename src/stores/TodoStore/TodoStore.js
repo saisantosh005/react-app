@@ -21,9 +21,9 @@ class TodoStore{
             const TodoObject={
                     id:this.count+=1,
                     title:event.target.value,
-                    isCompleted:false,
+                    completed:false,
                     isDisabled:false,
-            }
+            };
             const newTodoModel = new Todo(TodoObject);
             this.listOfTodos.push(newTodoModel);
             event.target.value="";
@@ -48,7 +48,7 @@ class TodoStore{
 
     @action.bound
     onClearCompleted(){
-        this.listOfTodos = this.listOfTodos.filter((item,index)=>item.isCompleted===false);
+        this.listOfTodos = this.listOfTodos.filter((item,index)=>item.completed===false);
     }
     
     @action.bound

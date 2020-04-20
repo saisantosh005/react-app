@@ -12,25 +12,25 @@ import {observable,action} from 'mobx';
 class Todo{
     @observable id;
     @observable title;
-    @observable isCompleted;
+    @observable completed;
     @observable isDisabled;
     @observable isChanged;
     constructor(props){
         this.id=props.id;
         this.title=props.title;
-        this.isCompleted=props.isCompleted;
+        this.completed=props.completed;
         this.isDisabled=props.isDisabled;
         this.isChanged=false;
     }
     
     @action.bound
     onCompletedTodo(){
-        if(this.isCompleted){
-            this.isCompleted=false;
+        if(this.completed){
+            this.completed=false;
             this.isDisabled=false;
         }
         else{
-            this.isCompleted=true;
+            this.completed=true;
             this.isDisabled=true;
         }
     }

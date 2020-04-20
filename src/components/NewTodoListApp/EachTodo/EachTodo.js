@@ -31,7 +31,7 @@ class EachTodo extends React.Component{
                 <EachTodoCheckBoxStyling 
                     type ="checkBox"
                     value={EachTodoData.id} 
-                    checked={EachTodoData.isCompleted} 
+                    checked={EachTodoData.completed} 
                     onChange={EachTodoData.onCompletedTodo}/> 
                 <EachTodoInput 
                     type="text"  

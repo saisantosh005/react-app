@@ -8,17 +8,17 @@ import {keyframes,css } from '@emotion/core';
 //             ${tw `flex justify-center items-center`};
 //           `;
 const CellParentDivStyle = styled.div`
-            width:${props=>(props.fieldWidth.gridWidth/(props.fieldWidth.gridSize)-8)}px;
-            height:${props=>(props.fieldWidth.gridWidth/(props.fieldWidth.gridSize)-8)}px;
+            width:${props=>(props.fieldWidth.gridWidth/(props.fieldWidth.gridSize)-10)}px;
+            height:${props=>(props.fieldWidth.gridWidth/(props.fieldWidth.gridSize)-10)}px;
             background:${props=>(props.theme==="light"?'#2a4365':"#616c7c")};
             ${tw `flex items-center justify-center`}`;        
             
 const CellStyle = styled.button`
             padding:0px;
             margin:0px;
-            width:${props=>(props.fieldWidth.gridWidth/(props.fieldWidth.gridSize)-8)}px;
-            height:${props=>(props.fieldWidth.gridWidth/(props.fieldWidth.gridSize)-8)}px;
-            ${tw `flex justify-center items-center`}
+            width:${props=>(props.fieldWidth.gridWidth/(props.fieldWidth.gridSize)-10)}px;
+            height:${props=>(props.fieldWidth.gridWidth/(props.fieldWidth.gridSize)-10)}px;
+            ${tw `flex justify-center items-center`};
             background:${props=>(props.theme==="light"?
             props.shouldShowHiddenCells===true?(props.eachModelData.isHidden===true?'#10e6d0':"red"):"#2a4365":
             props.shouldShowHiddenCells===true?(props.eachModelData.isHidden===true?'#52ad7d':"red"):'#616c7c')};
@@ -31,7 +31,6 @@ const CellStyle = styled.button`
             0%{
                 width:0%;
                 height:0%;
-                
             }
             100%{   
                 width:100%;

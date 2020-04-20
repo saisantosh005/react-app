@@ -22,6 +22,3 @@ class AddTodo extends React.Component{
     }
 }
 export {AddTodo};
-
-//doubt
-// onKeyDown={onAddTodo(event,this.todoTitle)

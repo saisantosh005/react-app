@@ -38,7 +38,6 @@ class GridMemoryGame extends React.Component{
         gridStore.setGridCells();
     }
     render(){
-        console.log(themeStore.object[themeStore.selectedTheme]);
         return(
             <GridGameAppStyle  theme = {themeStore.object[themeStore.selectedTheme]}>
                 <GridGameMainStyle>
