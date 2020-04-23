@@ -30,11 +30,11 @@ class LoadingWrapperWithFailure extends React.Component {
             onRetryClick={onRetryClick}
             errorMessage={errorMessage}
           />
-        )
+        );
       default:
-        return null
+        return null;
     }
   }
 }
 
-export default LoadingWrapperWithFailure
+export default LoadingWrapperWithFailure;

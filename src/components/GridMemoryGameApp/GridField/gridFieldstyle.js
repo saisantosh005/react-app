@@ -5,7 +5,7 @@ import tw  from 'tailwind.macro';
 const GridFieldStyle = styled.div`
         width:${props=>props.fieldWidth.gridWidth}px;
         height:${props=>props.fieldWidth.gridWidth}px;
-        ${tw `flex justify-between flex-wrap`}`;
+        ${tw `flex justify-between items-stretch flex-wrap`}`;
 const GridFIledStyledDiv = styled.div`
     animation:1s ease ${keyframes`{
         0%{

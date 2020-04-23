@@ -1,13 +1,14 @@
 import React from 'react';
 // import {observable} from 'mobx';
-import {observer} from 'mobx-react';
-import todoStore from '../../../stores/TodoStore/TodoStore';
+import {observer,inject} from 'mobx-react';
+// import todoStore from '../../../stores/TodoStore/TodoStore';
 import {TodoAppFixedDiv,MainInput,DropDown} from './addTodoStyle';
 
+@inject ("todoStore")
 @observer
 class AddTodo extends React.Component{
     changeSelectedfilter=()=>{
-        {todoStore.selectedFilter!=="All"?todoStore.selectedFilter="All":todoStore.selectedFilter=""}
+        {this.props.todoStore.selectedFilter!=="All"?this.props.todoStore.selectedFilter="All":this.props.todoStore.selectedFilter=""}
     }
     
     render(){

@@ -8,10 +8,12 @@ class TodoFooter extends React.Component{
         let {listOfTodos} = this.props;
         let countOfCompleted=0;
         listOfTodos.forEach((item)=>{
-            if(item.isCompleted===true){
+            if(item.completed===true){
                 countOfCompleted+=1;
             }
         });
+        
+
         
         return (
             <TodoFooterStyling>

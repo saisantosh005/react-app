@@ -13,8 +13,12 @@ function Page1() {
         // </div>
         <ul className="m-20 font-bold leading-8">
             <li>
+                <Link to="/users">UsersPage</Link>
+            </li>
+            <li>
                 <Link to="/Rest-api-practice">Rest Api</Link>
             </li>
+            
             <li>
                 <Link to="/New-Todo-List">New To do list App</Link>
             </li>

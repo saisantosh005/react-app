@@ -3,6 +3,8 @@
 
 import {observer} from 'mobx-react';
 
+
+
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
@@ -20,8 +22,7 @@ import {TodoListApp} from './components/NewTodoListApp/TodoApp/TodoListApp';
 import {A} from './components/practice/Practice';
 import {GridMemoryGame} from './components/GridMemoryGameApp/GridMemoryGame/GridMemoryApp.js';
 import {RestApiPractice} from './components/RestPractice/RestPractice.js';
-
-
+import UsersPage from './components/UsersPage/Userpage.js';
 
 // import {Home} from './home.js';
 // import Page1 from "./components/Page1";
@@ -40,6 +41,18 @@ import CounterPage from './components/CounterPage/index';
 // configure ({enforceActions:true});
 
 // 8
+import stores from './stores';
+import {Provider} from 'mobx-react';
+
+import {enableLogging} from'mobx-logger';
+const config ={
+    predicate:()=>true,
+    action:true,
+    reaction:true,
+    transcaction:true,
+    compute:true
+};
+enableLogging(config);
 
 @observer//1
 class App extends React.Component{
@@ -70,8 +83,11 @@ class App extends React.Component{
     render(){
         // let themeObject=App.themeObject;
         return (
+            <Provider {...stores}>
             <Router basename={process.env.PUBLIC_URL}>
             <Switch>
+                <Route exact path="/users" component={UsersPage}/>
+                
                 <Route exact path="/counter-page">
                     <CounterPage />
                 </Route>    
@@ -129,6 +145,7 @@ class App extends React.Component{
                 </Route>
             </Switch>
     </Router>
+    </Provider>
   );
         }
 }

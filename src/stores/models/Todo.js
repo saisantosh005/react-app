@@ -25,14 +25,19 @@ class Todo{
     
     @action.bound
     onCompletedTodo(){
-        if(this.completed){
-            this.completed=false;
-            this.isDisabled=false;
-        }
-        else{
-            this.completed=true;
-            this.isDisabled=true;
-        }
+        
+        this.completed=!this.completed
+        this.isDisabled =!this.isDisabled
+        
+        // if(this.completed){
+        //     this.completed=false;
+        //     this.isDisabled=false;
+        // }
+        // else{
+        //     this.completed=true;
+        //     this.isDisabled=true;
+        // }
+        
     }
     
     @action.bound

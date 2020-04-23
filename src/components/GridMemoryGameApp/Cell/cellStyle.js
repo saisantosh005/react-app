@@ -8,23 +8,20 @@ import {keyframes,css } from '@emotion/core';
 //             ${tw `flex justify-center items-center`};
 //           `;
 const CellParentDivStyle = styled.div`
-            width:${props=>(props.fieldWidth.gridWidth/(props.fieldWidth.gridSize)-10)}px;
-            height:${props=>(props.fieldWidth.gridWidth/(props.fieldWidth.gridSize)-10)}px;
+            width:${props=>(props.fieldWidth.gridWidth/(props.fieldWidth.gridSize)-8)}px;
+            height:${props=>(props.fieldWidth.gridWidth/(props.fieldWidth.gridSize)-8)}px;
             background:${props=>(props.theme==="light"?'#2a4365':"#616c7c")};
             ${tw `flex items-center justify-center`}`;        
             
 const CellStyle = styled.button`
-            padding:0px;
-            margin:0px;
-            width:${props=>(props.fieldWidth.gridWidth/(props.fieldWidth.gridSize)-10)}px;
-            height:${props=>(props.fieldWidth.gridWidth/(props.fieldWidth.gridSize)-10)}px;
+            width:${props=>(props.fieldWidth.gridWidth/(props.fieldWidth.gridSize)-8)}px;
+            height:${props=>(props.fieldWidth.gridWidth/(props.fieldWidth.gridSize)-8)}px;
             ${tw `flex justify-center items-center`};
-            background:${props=>(props.theme==="light"?
+             background:${props=>(props.theme==="light"?
             props.shouldShowHiddenCells===true?(props.eachModelData.isHidden===true?'#10e6d0':"red"):"#2a4365":
             props.shouldShowHiddenCells===true?(props.eachModelData.isHidden===true?'#52ad7d':"red"):'#616c7c')};
-            ${tw `flex justify-center m-1`};
+            ${tw `flex justify-center`};
             animation:${props=>props.shouldShowHiddenCells===true&&props.eachModelData.isHidden===true? 
-            
     css `
       .2s ease ${
         keyframes`
@@ -53,7 +50,8 @@ const CellStyle = styled.button`
         }
         `
     
-    }`;
+    }
+           `;
             
 export {CellStyle ,CellParentDivStyle};
 
