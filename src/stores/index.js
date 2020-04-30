@@ -7,7 +7,6 @@ import TodoService from '../services/TodoServices/index.api.js';
 
 const counterStore = new CounterStore();
 
-
 const userService =new UserService();
 const userStore = new UserStore(userService);
 

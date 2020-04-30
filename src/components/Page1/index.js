@@ -16,6 +16,9 @@ function Page1() {
                 <Link to="/users">UsersPage</Link>
             </li>
             <li>
+                <Link to="/ecommerce-store/sign-in">ECommerceApp</Link>
+            </li>
+            <li>
                 <Link to="/Rest-api-practice">Rest Api</Link>
             </li>
             

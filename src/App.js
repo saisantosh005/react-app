@@ -9,7 +9,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 import {CreateToDoList} from './components/toDoList/index.js';
-import { CarsList } from './components/CarsList/carsList.js';
+import {CarsList } from './components/CarsList/carsList.js';
 import {WaterCountApp} from './components/waterCount/waterApp.js';
 import {FormComponents}from './components/formComponents/index.js';
 import {CountriesDashboardApp} from'./components/project/countryDashboard/CountriesDashboardApp.js';
@@ -23,15 +23,22 @@ import {A} from './components/practice/Practice';
 import {GridMemoryGame} from './components/GridMemoryGameApp/GridMemoryGame/GridMemoryApp.js';
 import {RestApiPractice} from './components/RestPractice/RestPractice.js';
 import UsersPage from './components/UsersPage/Userpage.js';
+import LoginPage from './components/LoginPage/LoginPage.js';
 
+import SignInPage from './components/AuthLogin/components/SignInPage'
 // import {Home} from './home.js';
 // import Page1 from "./components/Page1";
 // import {CheckTheData} from'./components/CheckTheData/CheckTheData.js';
 
-import HomePage from "./components/HomePage";
+import HomePage from "./components/HomePage/index.js";
 import Page1 from "./components/Page1";
 import "./App.css";
 import CounterPage from './components/CounterPage/index';
+
+// import routes from './components/ECommerceApp/Routes/';
+
+import ProductPage from './components/ECommerceApp/components/ProductPage';
+
 
 // import {observable} from 'mobx';
 // import themeStore from './stores/ThemeStore/index';
@@ -42,7 +49,9 @@ import CounterPage from './components/CounterPage/index';
 
 // 8
 import stores from './stores';
+import ProductStores from './components/ECommerceApp/ProductStores';
 import {Provider} from 'mobx-react';
+import {route} from './components/AuthLogin/routes';
 
 import {enableLogging} from'mobx-logger';
 const config ={
@@ -80,13 +89,25 @@ class App extends React.Component{
     //     }
     // };
     
+    
     render(){
         // let themeObject=App.themeObject;
+        const allStores = {
+            ...stores,
+            ...ProductStores
+        };
         return (
-            <Provider {...stores}>
+            <Provider {...allStores}>
             <Router basename={process.env.PUBLIC_URL}>
             <Switch>
                 <Route exact path="/users" component={UsersPage}/>
+                <Route exact path="/Login-page">
+                    <LoginPage />
+                </Route>    
+                {route}                
+                <Route exact path="/ecommerce-store/products">
+                    <ProductPage />
+                </Route>    
                 
                 <Route exact path="/counter-page">
                     <CounterPage />
