@@ -19,4 +19,5 @@ class AuthService {
             apiMethods.get);
     }
 }
-export default AuthService
+// export {AuthService};
+export default AuthService;

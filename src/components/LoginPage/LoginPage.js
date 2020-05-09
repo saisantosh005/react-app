@@ -1,16 +1,12 @@
 import React from 'react';
 import {LoginPageStyled,UserNameStyle,UserPassword,SubmitButtonStyle} from './loginPageStyle.js';
 import {setAccessToken} from '../../utils/StorageUtils.js';
-import {Redirect} from 'react-router-dom';
+import {Redirect,withRouter} from 'react-router-dom';
 class LoginPage extends React.Component{
     setCookie=()=>{
         setAccessToken(120);
-        
-        <Redirect
-                to={{
-                    pathname:'/Login-page',
-                }}
-            />
+        const {history} = this.props;
+        history.replace('/');
     }
     render(){
         return(
@@ -21,4 +17,4 @@ class LoginPage extends React.Component{
             </LoginPageStyled>);
     }
 }
-export default LoginPage;
+export default withRouter(LoginPage);

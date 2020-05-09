@@ -22,8 +22,6 @@ class Product extends React.Component{
         this.notifyToast();
     }
     
-        
-    
     notifyToast=()=>{
         // toast.configure({
         //     hideProgressBar:true,

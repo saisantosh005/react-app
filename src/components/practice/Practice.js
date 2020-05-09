@@ -1,6 +1,6 @@
 import React from "react";
 import {observer} from 'mobx-react';
-import {observable} from 'mobx';
+import {observable,action,autorun} from 'mobx';
 import {Provider,inject} from 'mobx-react';
 import {StyledDiv} from './practice1.js';
 
@@ -49,26 +49,88 @@ class B extends React.Component{
 @observer
 class A extends React.Component{
     @observable speed="";
-    changePopus=()=>{
-            console.log("one");
-            this.speed=true
+    @observable count=7;
+    
+    message=observable({
+        name:"here",
+        value:6,
+        ok:true,
+        clear:{
+            value1:"hello",
         }
+    });
+    
+    // @action.bound
+    
+    changeCount=()=>{
+        this.count-=7;
+        this.speed=9; 
+        this.message.value++;
+        // .createIt={here:4};
+    }
+    
+    
+    @action.bound
+    changeIt(){
+        console.log(this.message.createIt,"start");
+        this.message.createIt.here-=4;
+        console.log(this.message.createIt,"end");
+    }
+    
+    creat=autorun(()=>{
+        console.log(this.message,"jooo");
+    });
+    
         
     render(){
-        // return (
-        //     <Provider temp={'value'}>
-            
-        //     A component
-        //         <B/>
-        //     </Provider>
-        //     );
+        console.log("hello");
         return (
             <div>
-                <StyledDiv onClick={this.changePopus}>Hello</StyledDiv>
-                {this.speed&&<div>Hello</div>}
+                <p>Count:{this.count}</p>
+                <p>Count:{this.speed}</p>
+                <p>{this.message.value}</p>
+                <button onClick={this.changeCount}>button</button>
             </div>
-        )
+        );
     }
 }
 
-export {A};
+// <button onClick={this.count>0?this.changeCount:this.changeIt}>button</button>
+// {this.message.createIt!==undefined&&<p>{this.message.createIt.here}</p>}
+// <StyledDiv onClick={this.changePopus}>Hello do it </StyledDiv>
+        // {this.speed&&<div>Hello do it </div>}
+
+ export {A};
+
+// const here = new A();
+
+// autorun(()=>{
+//     console.log(here.message);
+//     console.log(here.message.clear,"now");
+//     here.message.clear.hello=0;
+// });
+// here.message.clear.hello=9;
+// here.message.clear.hello=8;
+// here.message.to = 3;
+// here.message.to=5;
+
+
+
+
+// autorun()
+    // author = message.author
+    //     autorun(() => {
+    //         console.log(author.name)
+    //     })
+    //     message.author.name = "Sara"
+    //     message.author = { name: "John" }
+
+    // changePopus=()=>{
+    //     // this.speed=tre;
+    //     this.count-=1;
+    //     // this.speed = 7;
+        
+    //     // console.log
+    // }
+    
+    

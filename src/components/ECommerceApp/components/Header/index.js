@@ -15,8 +15,8 @@ class Header extends React.Component{
             {totalNoOfProductsDisplayed} product(s) found
             <SortDivStyle>
                 sort by price by:
-                <Select onChange={onChangSortBy}>
-                    <option value= "SELECT" selected={true} hidden={true} >select</option>
+                <Select defaultValue="" onChange={onChangSortBy}>
+                    <option value= "SELECT" >select</option>
                     <option value= "LOWEST TO HIGHEST">Lowest to Highest</option>
                     <option value = "HIGHEST TO LOWEST">Highesst to Lowest</option>
                 </Select>

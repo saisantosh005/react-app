@@ -37,7 +37,8 @@ import CounterPage from './components/CounterPage/index';
 
 // import routes from './components/ECommerceApp/Routes/';
 
-import ProductPage from './components/ECommerceApp/components/ProductPage';
+import ProductPageRoute from './components/ECommerceApp/Routes/ProductPage';
+// components/ProductPage';/
 
 
 // import {observable} from 'mobx';
@@ -101,12 +102,9 @@ class App extends React.Component{
             <Router basename={process.env.PUBLIC_URL}>
             <Switch>
                 <Route exact path="/users" component={UsersPage}/>
-                <Route exact path="/Login-page">
-                    <LoginPage />
-                </Route>    
-                {route}                
+                {route}
                 <Route exact path="/ecommerce-store/products">
-                    <ProductPage />
+                    <ProductPageRoute />
                 </Route>    
                 
                 <Route exact path="/counter-page">
@@ -174,6 +172,11 @@ class App extends React.Component{
 export default App;
 
 //
+// <Route exact path="/Login-page">
+                //     <LoginPage />
+                // </Route>    
+                
+                
 // themeObject={themeObject[this.getCurrentTheme()]} changeSelectedTheme={this.changeSelectedTheme}
 // themeObject={themeObject[this.getCurrentTheme()]} changeSelectedTheme={this.changeSelectedTheme}
 // 

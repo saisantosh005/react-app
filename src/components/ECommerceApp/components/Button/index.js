@@ -11,7 +11,7 @@ class Button extends React.Component{
     changeValue(event){
         const {onSelectSizeIt} = this.props;
         this.isClicked=!this.isClicked;
-        onSelectSizeIt(event);
+        onSelectSizeIt(event.target.value);
     };
     
     render(){

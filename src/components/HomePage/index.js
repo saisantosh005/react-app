@@ -22,11 +22,11 @@ class  HomePage extends React.Component {
     }
     
     render(){
-        if(getAccessToken()===undefined){
-            return(
-                this.gotoGridScreenIfLoggedIN()
-            );
-        }
+        // if(getAccessToken()===undefined){
+        //     return(
+        //         this.gotoGridScreenIfLoggedIN()
+        //     );
+        // }
         return (
         <div className="App">
             <header className="App-header">
