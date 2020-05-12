@@ -1,5 +1,5 @@
-{
-      "availableSizes":[
+[{
+   "availableSizes":[
          "S",
          "XS"
       ],
@@ -13,8 +13,9 @@
       "sku":12064273040195392,
       "style":"Black with custom print",
       "title":"Cat Tee Black T-Shirt",
+      "quantity":1,
       "image":"https://react-shopping-cart-67954.firebaseapp.com/static/media/12064273040195392_1.2995d79a.jpg"
-   }
+   }]
 
 
 

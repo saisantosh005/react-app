@@ -23,7 +23,6 @@ describe("signInForm",()=>{
         
         const {getByPlaceholderText} = render(
             <SignInPage password={password} onChangePassword={()=>{}}/>);
-        
         const passwordField=getByPlaceholderText("Password");
         expect(passwordField.value).toBe(password);
     });

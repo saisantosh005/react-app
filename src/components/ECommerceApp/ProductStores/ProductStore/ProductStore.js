@@ -1,18 +1,18 @@
 import {observable,computed ,action} from 'mobx';
 import {bindPromiseWithOnSuccess} from '@ib/mobx-promise';
 import {API_INITIAL,API_FAILED,API_FETCHING,API_SUCCESS} from '@ib/api-constants';
-import {clearUserSession} from '../../../../utils/StorageUtils.js';
 import ProductModel from '../model/ProductModel';
+
+import {clearUserSession} from '../../../../utils/StorageUtils.js';
+
 
 
 class ProductStore{
     @observable listOfProducts;
-    @observable listOfCartProducts;
     @observable getProductListAPIStatus;
     @observable getProductListAPIError;
     @observable sortBy;
     @observable sizeFilter;
-    @observable extraArray
     productService;
     
     constructor(productService){
@@ -35,7 +35,6 @@ class ProductStore{
     //     this.init();
     // }
     
-    
     @computed get products(){
         if(this.sizeFilter.length!==0){
             // let array = new Map();
@@ -49,7 +48,6 @@ class ProductStore{
         }
         const array=[];
         this.listOfProducts.forEach((value,key,map)=>{array.push(value)});
-        
         return array;
     }
     
@@ -60,10 +58,12 @@ class ProductStore{
             return array;
         }
         else if(this.sortBy==="HIGHEST TO LOWEST"){
-            return array.sort((a,b)=>a.price<b.price);
+            const myData = [].concat(array).sort((a, b) => a.price < b.price ? 1 : -1);
+            return myData;
         }
         else{
-            return array.sort((a,b)=>a.price>b.price);
+            const myData = [].concat(array).sort((a, b) => a.price > b.price ? 1 : -1);
+            return myData;
         }
     }
     
@@ -88,8 +88,8 @@ class ProductStore{
     }
     
     @action.bound
-    onChangSortBy(event){
-        this.sortBy = event.target.value;
+    onChangSortBy(input){
+        this.sortBy = input;
     }
     
     @action.bound
@@ -103,7 +103,7 @@ class ProductStore{
         }
         return false;
     }
-
+    
     @action.bound
     setProductListResponse(apiResponse){
         apiResponse.forEach((item)=>{
@@ -116,6 +116,8 @@ class ProductStore{
     setProductListAPIError(apiError){
         this.getProductListAPIError=apiError;
     }
+    
+    
     @action.bound
     setProductListAPIStatus(apiStatus){
         this.getProductListAPIStatus=apiStatus;

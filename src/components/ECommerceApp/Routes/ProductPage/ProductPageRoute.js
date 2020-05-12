@@ -5,24 +5,19 @@ import {withRouter } from 'react-router-dom';
 
 import {authStore} from '../../../AuthLogin/stores';
 import {getAccessToken} from '../../../AuthLogin/utils/StorageUtils.js';
-import {ProductPage} from '../../components/ProductPage';
+import ProductPage from '../../components/ProductPage';
 //  import {Redirect} from 'react-router-dom';
 
 @observer
 class ProductPageRoute extends React.Component{
-    
     @observable array
     @observable displayToastMessage= false;
-    
     // notify = () =>{toast("Product added to your cart!",{position: toast.POSITION.BOTTOM_CENTER})};
-    
     componentDidMount(){
         console.log(getAccessToken(),"santosh");
     }
     
     gotToLoginScreen=()=>{
-        // this.props.productStore.clearStore();
-        // alert("called Goto");
         const {history}=this.props;
         history.replace('/ecommerce-store/sign-in');
         authStore.userSignOut();
@@ -35,6 +30,7 @@ class ProductPageRoute extends React.Component{
         //     />
         // );
     }
+    
     
     render(){
         if(getAccessToken()===undefined){

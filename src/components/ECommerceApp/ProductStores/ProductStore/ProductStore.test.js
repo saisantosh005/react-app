@@ -11,7 +11,9 @@ import ProductService from '../../Service/ProductService';
 import ProductStore  from '.';
 
 import getProductAPI from '../../fixtures/ProductFixtures/ProductFixture.json';
+
 import ProductModel from '../model/ProductModel/index.js';
+import testFixture from '../../fixtures/ProductFixtures/test.json';
 // import fixtureProductData from '../../'
 
 /*global jest,expect*/
@@ -75,6 +77,49 @@ describe("Product Store tests",()=>{
         productStore.onSelectSize("XS");
         productStore.setProductListResponse(getProductAPI);
         expect(productStore.products).toEqual([new ProductModel(getProductAPI[0]),new ProductModel(getProductAPI[7])]);
+        expect(productStore.sizeFilter).toEqual(["XS"]);
     });
+     it("should give the filtered data",()=>{
+        productStore.onSelectSize("XS");
+        productStore.onSelectSize("XS");
+        // productStore.setProductListResponse(getProductAPI);
+        // expect(productStore.products).toEqual([new ProductModel(getProductAPI[0]),new ProductModel(getProductAPI[7])]);
+        expect(productStore.sizeFilter).toEqual([]);
+    });
+   
+    it("should test the filtered data as selected",()=>{
+        productStore.onSelectSize("XS");
+        productStore.onChangSortBy("LOWEST TO HIGHEST");
+        productStore.setProductListResponse(getProductAPI);
+        expect(productStore.sortedAndFilteredProducts).toEqual([new ProductModel(testFixture[0]),new ProductModel(testFixture[1])]);
+        
+        expect(productStore.totalNoOfProductsDisplayed).toBe(2);
+        expect(productStore.sortBy).toBe("LOWEST TO HIGHEST");
+    });
+    
+    it("should test that a value presetn ",()=>{
+        productStore.onSelectSize("XS");
+        expect(productStore.isProductPresent(['XS',"S","L"])).toBe(true);
+        expect(productStore.isProductPresent(['M',"S","L"])).toBe(false);
+    });
+    
+    it("should test computed variable",()=>{
+          productStore.onSelectSize("XS");
+        productStore.onChangSortBy("HIGHEST TO LOWEST");
+        productStore.setProductListResponse(getProductAPI);
+        expect(productStore.sortedAndFilteredProducts).toEqual([new ProductModel(testFixture[1]),new ProductModel(testFixture[0])]);
+        expect(productStore.totalNoOfProductsDisplayed).toBe(2);
+        expect(productStore.sortBy).toBe("HIGHEST TO LOWEST");
+    });
+    it("should test computed variable",()=>{
+          productStore.onSelectSize("XS");
+        productStore.onChangSortBy("SELECT");
+        productStore.setProductListResponse(getProductAPI);
+        expect(productStore.sortedAndFilteredProducts).toEqual([new ProductModel(testFixture[0]),new ProductModel(testFixture[1])]);
+        expect(productStore.totalNoOfProductsDisplayed).toBe(2);
+        expect(productStore.sortBy).toBe("SELECT");
+    });
+ 
+    
     
 })

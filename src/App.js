@@ -54,15 +54,15 @@ import ProductStores from './components/ECommerceApp/ProductStores';
 import {Provider} from 'mobx-react';
 import {route} from './components/AuthLogin/routes';
 
-import {enableLogging} from'mobx-logger';
-const config ={
-    predicate:()=>true,
-    action:true,
-    reaction:true,
-    transcaction:true,
-    compute:true
-};
-enableLogging(config);
+// import {enableLogging} from'mobx-logger';
+// const config ={
+//     predicate:()=>true,
+//     action:true,
+//     reaction:true,
+//     transcaction:true,
+//     compute:true
+// };
+// enableLogging(config);
 
 @observer//1
 class App extends React.Component{

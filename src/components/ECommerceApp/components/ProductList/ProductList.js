@@ -1,10 +1,12 @@
 import React from 'react';
 import Product from '../Product';
 import {observer,inject} from 'mobx-react';
+import Header from '../Header';
 import {ProductListStyle,ProductBodyDivStyle}  from '../../styledComponents/ProductList';
+import ProductStore from '../../ProductStores/ProductStore';
 import LoadingWrapperWithFailure from '../../../common/LoadingWrapperWithFailure/index.js';
 import NoDataView from '../../../common/NoDataView/index.js';
-import Header from '../Header';
+
 
 @inject("productStore","cartStore")
 @observer
@@ -26,12 +28,12 @@ class ProductList  extends React.Component{
             return <NoDataView/>;
         }
         
-        let arrayIt=[]
+        let arrayIt=[];
         // products.forEach((value,key,map)=>
         //     arrayIt.push(<Product onClickAddToCart = {onClickAddToCart} key={value.id} productDetails = {value}/>)
         // );
         // products.
-        products.forEach(item=> {arrayIt.push(<Product onClickAddToCart = {onClickAddToCart}
+        sortedAndFilteredProducts.forEach(item=> {arrayIt.push(<Product onClickAddToCart = {onClickAddToCart}
             key ={item.id} productDetails = {item}/>)});
         return arrayIt;
     });
@@ -39,7 +41,7 @@ class ProductList  extends React.Component{
         const {getProductListAPIError,getProductListAPIStatus} = this.getProductStoreData();
         return(
             <ProductBodyDivStyle>
-                <Header />
+                <Header productStore={this.props.productStore}/>
                 <ProductListStyle>
                     <LoadingWrapperWithFailure
                         apiStatus = {getProductListAPIStatus}
