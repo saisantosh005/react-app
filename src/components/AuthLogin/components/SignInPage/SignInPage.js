@@ -26,8 +26,12 @@ window.cookieconsent.initialise({
 
 @observer
 class SignInPage extends React.Component{
-    
-    
+    userNameRef = React.createRef();
+    componentDidMount(){
+        
+        this.userNameRef.current.focus();
+        console.log(4);
+    }
     
     render(){
         let {onChangeUserName,onChangePassword,
@@ -41,6 +45,7 @@ class SignInPage extends React.Component{
                         Sign in
                     </SignInNameStyled>
                     <UserNameStyle 
+                        ref = {this.userNameRef}
                         type="text"
                         defaultValue={userName}
                         onChange = {onChangeUserName} 

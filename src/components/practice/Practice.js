@@ -1,55 +1,250 @@
+import React, { Component } from "react";
 
-
-import React from "react";
+import {action} from 'mobx';
 import { render } from "react-dom";
-import { observable, computed, autorun, action } from "mobx";
-import { observer } from "mobx-react";
 
-class Person {
-  @observable firstName = "Tony";
-  @observable lastName = "Stark";
+class A extends Component {
+  state = {
+    count: 2,
+    doubleTheCount: 3,
+    tripleTheCount: 4,
+  };
 
-  @computed get fullName() {
-    return this.firstName + " " + this.lastName;
-  }
+  updateCounts = async () => {
+    let promise = new Promise((resolve, reject) => {
+      resolve("Success");
+    });
+    await promise;
+    this.updateCountsAfterPromiseSettled();
+  };
 
   @action.bound
-changeFirstNameAndLastName() {
-    let promise = new Promise((resolve, reject) => {
-      resolve({
-        first_name: "Peter",
-        last_name: "Parker",
-      });
+  updateCountsAfterPromiseSettled = () => {
+    this.setState({
+      count: this.state.count + 1,
     });
-    promise.then((response) => {
-      this.firstName = response.first_name;
-      this.lastName = response.last_name;
+    this.setState({
+      doubleTheCount: this.state.doubleTheCount + 1,
     });
+    this.setState({
+      tripleTheCount: this.state.tripleTheCount + 1,
+    });
+  };
+
+  render() {
+    console.log("render Counter");
+    return (
+      <div>
+        <p>Count: {this.count}</p>
+        <p>Double Count: {this.doubleTheCount}</p>
+        <p>Triple Count: {this.tripleTheCount}</p>
+        <button onClick={this.updateCounts}>Update counts</button>
+      </div>
+    );
   }
 }
-
-const newPerson = new Person();
-
-// Reaction: log the profile info whenever it changes
-autorun(() => {
-  console.log("Autorun called");
-  console.log(newPerson.fullName);
-});
-
-// Example React component that observes state
-const A = observer((props) => {
-  console.log("render ProfileView");
-
-  return (
-    <div>
-      <p>{newPerson.fullName}</p>
-      <button onClick={newPerson.changeFirstNameAndLastName}>
-        Change first name and last name
-      </button>
-    </div>
-  );
-});
 export {A}
+// render(<Counter />, document.getElementById("root"));
+// import React, { Component } from "react";
+// import { render } from "react-dom";
+// import { inject, Provider, observer } from "mobx-react";
+// import { observable, action } from "mobx";
+
+// @inject("appStore")
+// @observer
+// class Message extends Component {
+//   message;
+//   constructor(props) {
+//     super(props);
+//     this.message = this.props.appStore.message;
+//   }
+
+//   onChangeTitle = () => {
+//     const { onChangeTitle } = this.props.appStore;
+//     onChangeTitle("HI");
+//   };
+
+//   render() {
+//     return (
+//       <div>
+//         <p>Message title: {this.message.title}</p>
+//         <button onClick={this.onChangeTitle}>Change title</button>
+//       </div>
+//     );
+//   }
+// }
+
+// class A extends Component {
+//   render() {
+//     return (
+//       <Provider appStore={appStore}>
+//         <Message />
+//       </Provider>
+//     );
+//   }
+// }
+
+// class AppStore {
+//   @observable message = {
+//     title: "Hello",
+//   };
+
+//   @action.bound
+//   onChangeTitle(title) {
+//     this.message.title = title;
+//   }
+// }
+
+// const appStore = new AppStore();
+
+// export {A}
+// render(<App />, document.getElementById("root"));
+
+
+
+
+
+
+// import React, { Component } from "react";
+// import { render } from "react-dom";
+// import { observable } from "mobx";
+// import { observer } from "mobx-react";
+
+// @observer
+// class A extends Component {
+//   @observable state = {
+//     name: "Michael",
+//     address: {
+//       city: "Hyderabad",
+//       country: "India",
+//     },
+//   };
+
+//   // prevCityState = this.state.address.city;
+//   // nextCityState = this.state.address.city;
+
+//   updateAddress = () => {
+//     // this.prevCityState = this.state.address.city;
+//     // this.state.address.city = "Delhi";
+//   };
+
+//   render() {
+//     // this.nextCityState = this.state.address.city;
+//     console.log(this.nextCityState === this.prevCityState);
+
+//     return (
+//       <div>
+//       <p>Name: {this.state.name}</p>
+//         <p>City: {this.state.address.city}</p>
+//         <p>Name: {this.state.address.country}</p>
+        
+        
+//         <button onClick={this.updateAddress}>Update address</button>
+//       </div>
+//     );
+//   }
+// }
+
+// export {A}
+// render(<PersonDetails />, document.getElementById("root"));
+
+
+// import React, { Component } from "react";
+// import { render } from "react-dom";
+// import { observable, computed } from "mobx";
+// import { observer } from "mobx-react";
+
+// // Example React component that observes state
+// @observer
+// class A extends Component {
+//   @observable firstName = "Ramu";
+//   @observable lastName = "Ratnam";
+//   @observable initial = "K";
+
+//   @computed get fullName() {
+//     console.log("Computed");
+//     return this.lastName + " " + this.initial;
+//   }
+
+//   changeFirstNameAndLastName = () => {
+//     this.firstName = "Mark";
+//   };
+
+//   getFullNameFn = () => {
+//     console.log("getFullNameFn called");
+//     return this.lastName + " " + this.initial;
+//   };
+
+//   render() {
+//     console.log("hello");
+//     return (
+//       <div>
+//         <p>FirstName: {this.firstName}</p>
+//         <p>Fullname: {this.fullName}</p>
+//         <p>{this.getFullNameFn()}</p>
+//         <button onClick={this.changeFirstNameAndLastName}>
+//           Change first name and last name
+//         </button>
+//       </div>
+//     );
+//   }
+// }
+// export {A};
+// render(<ProfileView />, document.getElementById("root"));
+
+
+
+
+// import React from "react";
+// import { render } from "react-dom";
+// import { observable, computed, autorun, action } from "mobx";
+// import { observer } from "mobx-react";
+
+// class Person {
+//   @observable firstName = "Tony";
+//   @observable lastName = "Stark";
+
+//   @computed get fullName() {
+//     return this.firstName + " " + this.lastName;
+//   }
+
+//   @action.bound
+// changeFirstNameAndLastName() {
+//     let promise = new Promise((resolve, reject) => {
+//       resolve({
+//         first_name: "Peter",
+//         last_name: "Parker",
+//       });
+//     });
+//     promise.then((response) => {
+//       this.firstName = response.first_name;
+//       this.lastName = response.last_name;
+//     });
+//   }
+// }
+
+// const newPerson = new Person();
+
+// // Reaction: log the profile info whenever it changes
+// autorun(() => {
+//   console.log("Autorun called");
+//   console.log(newPerson.fullName);
+// });
+
+// // Example React component that observes state
+// const A = observer((props) => {
+//   console.log("render ProfileView");
+
+//   return (
+//     <div>
+//       <p>{newPerson.fullName}</p>
+//       <button onClick={newPerson.changeFirstNameAndLastName}>
+//         Change first name and last name
+//       </button>
+//     </div>
+//   );
+// });
+// export {A}
 // render(<ProfileView person={newPerson} />, document.getElementById("root"));
 
 
