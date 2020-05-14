@@ -1,49 +1,89 @@
 import React, { Component } from "react";
-
-import {action} from 'mobx';
 import { render } from "react-dom";
+import { observable } from "mobx";
+import { observer } from "mobx-react";
 
+@observer
 class A extends Component {
-  state = {
-    count: 2,
-    doubleTheCount: 3,
-    tripleTheCount: 4,
+  @observable stateIt = {
+    name: "Michael",
+    address: {
+      city: "Hyderabad",
+      country: "India",
+    },
   };
 
-  updateCounts = async () => {
-    let promise = new Promise((resolve, reject) => {
-      resolve("Success");
-    });
-    await promise;
-    this.updateCountsAfterPromiseSettled();
-  };
+  prevCityState = this.stateIt.address.city;
+  nextCityState = this.stateIt.address.city;
 
-  @action.bound
-  updateCountsAfterPromiseSettled = () => {
-    this.setState({
-      count: this.state.count + 1,
-    });
-    this.setState({
-      doubleTheCount: this.state.doubleTheCount + 1,
-    });
-    this.setState({
-      tripleTheCount: this.state.tripleTheCount + 1,
-    });
+  updateAddress = () => {
+    this.prevCityState = this.stateIt.address.city;
+    this.stateIt.address.city = "Hyderabad";
   };
 
   render() {
-    console.log("render Counter");
+    this.nextCityState = this.stateIt.address.city;
+    console.log(this.nextCityState === this.prevCityState);
+
     return (
       <div>
-        <p>Count: {this.count}</p>
-        <p>Double Count: {this.doubleTheCount}</p>
-        <p>Triple Count: {this.tripleTheCount}</p>
-        <button onClick={this.updateCounts}>Update counts</button>
+        <button onClick={this.updateAddress}>Update address</button>
       </div>
     );
   }
 }
+
+
 export {A}
+// render(<PersonDetails />, document.getElementById("root"));
+
+
+// import React, { Component } from "react";
+
+// import {action} from 'mobx';
+// import { render } from "react-dom";
+
+// class A extends Component {
+//   state = {
+//     count: 2,
+//     doubleTheCount: 3,
+//     tripleTheCount: 4,
+//   };
+
+//   updateCounts = async () => {
+//     let promise = new Promise((resolve, reject) => {
+//       resolve("Success");
+//     });
+//     await promise;
+//     this.updateCountsAfterPromiseSettled();
+//   };
+
+//   @action.bound
+//   updateCountsAfterPromiseSettled = () => {
+//     this.setState({
+//       count: this.state.count + 1,
+//     });
+//     this.setState({
+//       doubleTheCount: this.state.doubleTheCount + 1,
+//     });
+//     this.setState({
+//       tripleTheCount: this.state.tripleTheCount + 1,
+//     });
+//   };
+
+//   render() {
+//     console.log("render Counter");
+//     return (
+//       <div>
+//         <p>Count: {this.count}</p>
+//         <p>Double Count: {this.doubleTheCount}</p>
+//         <p>Triple Count: {this.tripleTheCount}</p>
+//         <button onClick={this.updateCounts}>Update counts</button>
+//       </div>
+//     );
+//   }
+// }
+// export {A}
 // render(<Counter />, document.getElementById("root"));
 // import React, { Component } from "react";
 // import { render } from "react-dom";

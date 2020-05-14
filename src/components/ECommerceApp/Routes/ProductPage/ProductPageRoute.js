@@ -44,3 +44,17 @@ class ProductPageRoute extends React.Component{
 
 
 export default withRouter(ProductPageRoute);
+
+
+
+/*
+
+
+const ecommerceAppRoute=[
+<ProtectedRout ecommerceProductsPath={ECOMMERCE_APP_PATH} signInPath={SIGN_IN_PATH}/>];
+
+export {ecommerceAppRoute}
+
+
+
+*/
