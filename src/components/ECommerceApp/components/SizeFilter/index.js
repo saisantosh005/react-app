@@ -1,3 +1,3 @@
-import SizeFilter from './SizeFilter.js';
+import {SizeFilter} from './SizeFilter.js';
 
-export default SizeFilter ;
+export {SizeFilter} ;

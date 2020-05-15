@@ -1,2 +1,2 @@
-import CheckOutButton from './CheckOutButton.js';
-export default CheckOutButton;
+import {CheckOutButton} from './CheckOutButton.js';
+export {CheckOutButton};

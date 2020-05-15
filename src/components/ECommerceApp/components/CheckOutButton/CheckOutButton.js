@@ -1,5 +1,5 @@
 import React from 'react';
-import {CheckOutButtonStyle} from '../../styledComponents/CheckOutButton';
+import {CheckOutButtonStyle} from './styledComponent.js';
 
 class CheckOutButton extends React.Component{
     
@@ -19,4 +19,4 @@ class CheckOutButton extends React.Component{
         );
     }
 }
-export default CheckOutButton;
+export {CheckOutButton};

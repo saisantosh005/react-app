@@ -1,2 +1,2 @@
-import ProductList from './ProductList.js';
-export default ProductList;
+import {ProductList} from './ProductList.js';
+export {ProductList};

@@ -1,8 +1,8 @@
 import React from 'react';
 import {observable } from 'mobx';
 import {observer,inject} from 'mobx-react';
-import CartItem from '../CartItem';
-import {CartListStyle} from '../../styledComponents/CartList';
+import {CartItem} from '../CartItem';
+import {CartListStyle} from './styledComponent.js';
 
 
 @inject("cartStore")
@@ -22,4 +22,4 @@ class CartList extends React.Component{
     }
 }
 
-export default CartList;
+export {CartList};

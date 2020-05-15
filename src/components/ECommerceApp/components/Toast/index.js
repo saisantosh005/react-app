@@ -1,5 +1,5 @@
 import React from'react';
-import {ToastMainDivStyle} from '../../styledComponents/Toast';
+import {ToastMainDivStyle} from './styledComponent.js';
 
 class Toast extends React.Component{
     
@@ -11,4 +11,4 @@ class Toast extends React.Component{
             </ToastMainDivStyle>);
     }
 }
-export default Toast ;
+export {Toast} ;

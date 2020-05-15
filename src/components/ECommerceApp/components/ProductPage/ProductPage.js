@@ -9,11 +9,11 @@ import {EcommerceAppStyle,
     ECommereAPPMainDiv,ProductCartMainDivStyle,
     SignOutAndCartStyle,ToastDivStyle,
     SignOutButtonStyle,ToastMessageStyle
-} from '../../styledComponents/ProductPage';
-import SizeFilter  from '../SizeFilter';
-import ProductList from '../ProductList';
-import ProductCart from '../ProductCart';
-import Toast     from '../Toast';
+} from './styledComponent.js';
+import {SizeFilter}  from '../SizeFilter';
+import {ProductList} from '../ProductList';
+import {ProductCart} from '../ProductCart';
+import {Toast}     from '../Toast';
 import {authStore} from '../../../AuthLogin/stores';
 import {getAccessToken,clearUserSession} from '../../../AuthLogin/utils/StorageUtils.js';
 

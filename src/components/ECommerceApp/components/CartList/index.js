@@ -1,3 +1,3 @@
-import CartList from './CartList.js';
+import {CartList} from './CartList.js';
 
-export default CartList;
+export { CartList};

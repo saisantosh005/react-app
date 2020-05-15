@@ -3,7 +3,7 @@ import {inject,observer} from 'mobx-react';
 import {SubTotalStyle,
     SubTotalName,
     AmountStyle,
-} from '../../styledComponents/SubTotal';
+} from './styledComponent.js';
 
 
 @observer
@@ -23,4 +23,4 @@ class SubTotal extends React.Component{
     }
 }
 
-export default SubTotal;
+export {SubTotal};

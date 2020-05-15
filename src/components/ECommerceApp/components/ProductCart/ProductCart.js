@@ -2,16 +2,16 @@ import React from 'react';
 import {observable} from 'mobx';
 import {observer,inject} from 'mobx-react';
 import {FiShoppingCart} from 'react-icons/fi';
-import CartList from '../CartList';
-import SubTotal from '../SubTotal';
-import CheckOutButton from '../CheckOutButton';
+import {CartList} from '../CartList';
+import {SubTotal} from '../SubTotal';
+import {CheckOutButton} from '../CheckOutButton';
 import {ProductCartStyle,
         CartButtonStyle,
         CartFooter,
         NoOfItemsStyle,
         CartSymbol,AddContentStyle,
         CartSymbolDivStyle,CartListStyle,
-        CrossStyle,CartStyle,CartDataStyle} from '../../styledComponents/ProductCart' ;
+        CrossStyle,CartStyle,CartDataStyle} from './styledComponent.js' ;
 
 
 
@@ -74,4 +74,4 @@ class ProductCart extends React.Component{
         );
     }
 }
-export default ProductCart;
+export {ProductCart};

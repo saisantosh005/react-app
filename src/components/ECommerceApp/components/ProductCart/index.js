@@ -1,2 +1,2 @@
-import ProductCart from './ProductCart.js';
-export default ProductCart;
+import {ProductCart} from './ProductCart.js';
+export  {ProductCart};

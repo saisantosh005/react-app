@@ -1,7 +1,7 @@
 import React from 'react';
 import {inject,observer} from 'mobx-react';
 import {HeaderMainDivStyle,
-        SortDivStyle,Select} from '../../styledComponents/Header';
+        SortDivStyle,Select} from './styledComponent.js';
         
 // @inject ("productStore")
 @observer
@@ -28,5 +28,4 @@ class Header extends React.Component{
     }
         
 }
-
-export default Header;
+export {Header};

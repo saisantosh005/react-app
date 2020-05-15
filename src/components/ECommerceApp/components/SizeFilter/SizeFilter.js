@@ -2,8 +2,8 @@ import React from 'react';
 import {observable} from 'mobx';
 import {observer} from 'mobx-react';
 import {inject} from 'mobx-react';
-import Button from '../Button';
-import {SelectSizeDivStyle} from '../../styledComponents/SizeFilter';
+import {Button} from '../Button';
+import {SelectSizeDivStyle} from './styledComponent.js';
 
 @inject ("productStore")
 @observer
@@ -19,4 +19,4 @@ class SizeFilter  extends React.Component{
     }
 }
 
-export default SizeFilter;
+export {SizeFilter};

@@ -1,3 +1,3 @@
-import CartItem from './CartItem.js';
+import {CartItem} from './CartItem.js';
 
-export default CartItem;
+export {CartItem};

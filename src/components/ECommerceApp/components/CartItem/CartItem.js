@@ -10,7 +10,7 @@ CartTitleAndCrossStyle,
     PriceStyle,
     QuantityStyle
     
-} from '../../styledComponents/CartItem';
+} from './styledComponent.js';
 // import {observable} from 'mobx';
 
 @inject("cartStore")
@@ -45,4 +45,4 @@ class CartItem extends React.Component{
         );
     }
 }
-export default CartItem;
+export {CartItem};

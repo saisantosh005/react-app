@@ -6,10 +6,10 @@ import {ProductMainDivStyle,
         ProductName,
         ProductDataStyle,
         BoldIt,PriceDivStyle,InstallmentsDiv,
-        AddToCart,ToastMessage,FreeMainStyle,FreeShippingDivStyle} from '../../styledComponents/Product';
+        AddToCart,ToastMessage,FreeMainStyle,FreeShippingDivStyle} from './styledComponent.js';
         
 import {toast,Slide} from 'react-toastify';
-import Toast     from '../Toast';
+import {Toast}     from '../Toast';
 // import {css } from 'glamour';
 @inject("cartStore")
 @observer 
@@ -76,5 +76,5 @@ class Product extends React.Component{
             </ProductMainDivStyle>);
     }
 }
-export default Product;
+export {Product};
 // <div>{currencyFormat} {Number(price.toFixed(0))+Number((price%price.toFixed(0)).toFixed(2))}</div>

@@ -1,9 +1,9 @@
 import React from 'react';
-import Product from '../Product';
+import {Product} from '../Product';
 import {observer,inject} from 'mobx-react';
-import Header from '../Header';
-import {ProductListStyle,ProductBodyDivStyle}  from '../../styledComponents/ProductList';
-import ProductStore from '../../ProductStores/ProductStore';
+import {Header} from '../Header';
+import {ProductListStyle,ProductBodyDivStyle}  from './styledComponent.js';
+// import ProductStore from '../../ProductStores/ProductStore';
 import LoadingWrapperWithFailure from '../../../common/LoadingWrapperWithFailure/index.js';
 import NoDataView from '../../../common/NoDataView/index.js';
 
@@ -53,7 +53,7 @@ class ProductList  extends React.Component{
             );
     }
 }
-export default ProductList;
+export {ProductList};
 
 
         

@@ -1,3 +1,3 @@
-import SubTotal from './SubTotal.js';
+import {SubTotal} from './SubTotal.js';
 
-export default SubTotal;
+export {SubTotal};
