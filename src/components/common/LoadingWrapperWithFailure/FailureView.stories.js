@@ -24,7 +24,7 @@ export const knobs = () => (
       errorMessage={text('errorMessage', 'failed message')}
       onRetryClick={action('retry clicked')}
    />
-)
+);
 
 knobs.story = {
    decorators: [withKnobs]

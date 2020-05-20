@@ -27,3 +27,22 @@ class Button extends React.Component{
 }
 
 export {Button};
+
+
+// import React from 'react';
+
+// class Button extends React.Component{
+//     here = ()=>{
+        
+//     }
+    
+//     render(){   
+//         const {children} = this.props;
+//         return(
+//         <button onClick={this.here} >
+//         {children[1]}
+//         </button>);
+//     }
+// }
+
+// export {Button};
