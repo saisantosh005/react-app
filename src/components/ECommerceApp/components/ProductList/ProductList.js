@@ -17,26 +17,24 @@ class ProductList  extends React.Component{
     getProductStoreData=()=>{
         return this.props.productStore;    
     }
+    
     doNetWorkCalls=()=>{
         this.getProductStoreData().getProductList();
     }
     
     renderProductList=observer(()=>{
         let {onClickAddToCart} =this.props.cartStore;
-        let {listOfProducts,sortedAndFilteredProducts,products}=this.getProductStoreData();
+        let {listOfProducts,sortedAndFilteredProducts}=this.getProductStoreData();
         if(listOfProducts.size===0){
             return <NoDataView/>;
         }
-        
         let arrayIt=[];
-        // products.forEach((value,key,map)=>
-        //     arrayIt.push(<Product onClickAddToCart = {onClickAddToCart} key={value.id} productDetails = {value}/>)
-        // );
-        // products.
         sortedAndFilteredProducts.forEach(item=> {arrayIt.push(<Product onClickAddToCart = {onClickAddToCart}
             key ={item.id} productDetails = {item}/>)});
         return arrayIt;
     });
+    
+    
     render(){
         const {getProductListAPIError,getProductListAPIStatus} = this.getProductStoreData();
         return(
@@ -55,8 +53,6 @@ class ProductList  extends React.Component{
 }
 export {ProductList};
 
-
-        
         // alert(listOfProducts.get(1));
         // console.log(listOfProducts);
         // return sortedAndFilteredProducts.map((item,index)=><Product onClickAddToCart = {onClickAddToCart} key={item.id} productDetails = {item}/>);

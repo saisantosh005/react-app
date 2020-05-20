@@ -3,11 +3,11 @@ import {SignInPage}  from '../../components/SignInPage';
 import {observable} from 'mobx';
 import {observer} from 'mobx-react';
 import { withRouter } from 'react-router-dom';
-
-import {setAccessToken,getAccessToken} from '../../../../utils/StorageUtils.js';
-import {ECOMMERCE_APP_PATH,ERROR_MESSAGE_ONE,ERROR_MESSAGE_TWO} from '../../constants/SignInPage';
-import {authStore} from '../../stores';
 import {Redirect} from 'react-router';
+
+import {authStore} from '../../stores';
+import {ECOMMERCE_APP_PATH,ERROR_MESSAGE_ONE,ERROR_MESSAGE_TWO} from '../../constants/SignInPage';
+import {setAccessToken} from '../../../../utils/StorageUtils.js';
 
 @observer
 class SignInRoute extends React.Component{
@@ -41,12 +41,11 @@ class SignInRoute extends React.Component{
         }
     }
     
-    onSuccess=()=>{
+    onSuccess=(input)=>{
         this.errorMessage="";
+        setAccessToken(authStore.access_token);
         let {history} =this.props;
         history.replace(ECOMMERCE_APP_PATH);
-        // alert(authStore.access_token);
-        setAccessToken(authStore.access_token);
     }
     
     onFailure = ()=>{
@@ -61,11 +60,6 @@ class SignInRoute extends React.Component{
     }
     
     render(){
-        
-        if(getAccessToken()!==undefined){
-            return this.renderProductPage();
-        }
-        
         return(
             <SignInPage 
                 onChangePassword={this.onChangePassword}

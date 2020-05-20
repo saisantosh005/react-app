@@ -28,7 +28,6 @@ window.cookieconsent.initialise({
 class SignInPage extends React.Component{
     userNameRef = React.createRef();
     componentDidMount(){
-        
         this.userNameRef.current.focus();
         console.log(4);
     }

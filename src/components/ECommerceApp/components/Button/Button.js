@@ -9,8 +9,10 @@ class Button extends React.Component{
     
     @action.bound
     changeValue(event){
+        console.log("ok");
         // const {onSelectSizeIt} = this.props;
         this.isClicked=!this.isClicked;
+        console.log(this.isClicked);
         // onSelectSizeIt(event.target.value);
     }
     

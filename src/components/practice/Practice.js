@@ -1,40 +1,135 @@
-import React, { Component } from "react";
-import { render } from "react-dom";
-import { observable } from "mobx";
-import { observer } from "mobx-react";
-
-@observer
-class A extends Component {
-  @observable stateIt = {
-    name: "Michael",
-    address: {
-      city: "Hyderabad",
-      country: "India",
-    },
-  };
-
-  prevCityState = this.stateIt.address.city;
-  nextCityState = this.stateIt.address.city;
-
-  updateAddress = () => {
-    this.prevCityState = this.stateIt.address.city;
-    this.stateIt.address.city = "Hyderabad";
-  };
-
-  render() {
-    this.nextCityState = this.stateIt.address.city;
-    console.log(this.nextCityState === this.prevCityState);
-
-    return (
-      <div>
-        <button onClick={this.updateAddress}>Update address</button>
-      </div>
-    );
-  }
+function UserGreeting() {
+  return <h1>Welcome back!</h1>;
 }
 
+function A() {
+  return <h1>Please sign up.</h1>;
+}
+export {A};
+// ReactDOM.render(<GuestGreeting />, document.getElementById("root"));
 
+// ReactDOM.render(<UserGreeting />, document.getElementById("root"));
+// import React from 'react';
+
+// class A extends React.Component{
+//   constructor(props){
+//     super(props);
+//     this.newRef = React.createRef();
+//     this.here = React.createRef();
+//   }
+//   componentDidMount(){
+//     this.newRef.current.focus();
+//   }
+//   makeFocus=()=>{
+//     this.here.current.focus();
+//   }
+//   render(){
+//     return(
+//       <div>
+        
+//         <input type="text" ref = {this.newRef}/>
+//         <input type="text" ref = {this.here}/>
+//         <button onClick={this.makeFocus}>make focus</button>
+//       </div>
+//       );
+//   }
+// }
+
+// export {A};
+
+
+
+//    fragemnts-------
+/*import React from 'react';
+
+
+class A extends React.Component{
+  
+  render(){
+    return(
+      <table>
+        <tbody>
+          <tr>
+          <B/>
+          </tr>
+        
+        </tbody>
+      
+      </table>
+      );
+  }
+}
 export {A}
+
+
+
+// class A extends React.Component{
+  
+//   render(){
+//     return(
+//       <React.Fragment>
+//       <h1>h</h1>
+//       <p>asdf</p>
+//       </React.Fragment>
+      
+//       );
+//   }
+// }
+// export {A}
+
+
+class B extends React.Component{
+  render(){
+    return(
+    <>
+    <td>one</td>
+    <td>one</td>
+    <td>one</td>
+    </>)
+  }
+}
+*/
+//// ----fragements done
+
+
+
+
+
+// import React, { Component } from "react";
+// import { render } from "react-dom";
+// import { observable } from "mobx";
+// import { observer } from "mobx-react";
+
+// @observer
+// class A extends Component {
+//   @observable stateIt = {
+//     name: "Michael",
+//     address: {
+//       city: "Hyderabad",
+//       country: "India",
+//     },
+//   };
+
+//   prevCityState = this.stateIt.address.city;
+//   nextCityState = this.stateIt.address.city;
+
+//   updateAddress = () => {
+//     this.prevCityState = this.stateIt.address.city;
+//     this.stateIt.address.city = "Hyderabad";
+//   };
+
+//   render() {
+//     this.nextCityState = this.stateIt.address.city;
+//     console.log(this.nextCityState === this.prevCityState);
+
+//     return (
+//       <div>
+//         <button onClick={this.updateAddress}>Update address</button>
+//       </div>
+//     );
+//   }
+// }
+// export {A}
 // render(<PersonDetails />, document.getElementById("root"));
 
 

@@ -8,7 +8,7 @@ import {Dashboard} from './dashBoardStyle.js';
 // import themeStore from '../stores/ThemeStore';
 import {observer} from 'mobx-react';
 import themeStore from '../../../stores/ThemeStore/index.js';
-
+import WithCoutries from '../../../common/hocs/withCountries.js';
 @observer 
 class CountriesDashboardApp extends React.Component{
     constructor(props){
@@ -16,40 +16,21 @@ class CountriesDashboardApp extends React.Component{
         this.state={
             selectedRegion:"All",
             searchText:"",
-            selectedTheme:true,
             countries:'',
             commonFetchData:"",
         };
     }
-    
-    getCurrentTheme=()=>{
-        return themeStore.selectedTheme;
-    }
- 
-    changeSelectedTheme=()=>{
-        themeStore.setCurrentTheme();
-    }
-    
-    themeObject={
-        light:{
-            themeName:"Dark Mode",
-            background:"whitesmoke",
-            selectedBackgrounds:"white",
-            color:"black",
-            border:"lightgrey",
-        },
-        dark:{
-            themeName:"Light Mode",
-            selectedBackgrounds:"#223c54",
-            background:"#2a3c4d",
-            color:"white",
-            border:"black",
-        }
-    };
-    
-    
     async componentDidMount() {
         this.getCountries();
+    }
+    
+    async getCountries(){
+        const fetchData = await fetch('https://restcountries.eu/rest/v2/all');
+        const fetchDataJson = await fetchData.json();
+        this.setState({
+            countries:fetchDataJson,
+            commonFetchData:fetchDataJson,
+        });
     }
     
     onChangeSelectedRegion=(input)=>{
@@ -80,15 +61,7 @@ class CountriesDashboardApp extends React.Component{
         
         return null;
     }
-    async getCountries(){
-        const fetchData = await fetch('https://restcountries.eu/rest/v2/all');
-        const fetchDataJson = await fetchData.json();
-        this.setState({
-            countries:fetchDataJson,
-            commonFetchData:fetchDataJson,
-        });
-    }
-   
+    
     filterCountriesByName=(event)=>{
         if(event.keyCode===13){
             let { commonFetchData,searchText,selectedRegion }=this.state;
@@ -121,15 +94,11 @@ class CountriesDashboardApp extends React.Component{
         }
     }
     
-    onChangeTheme=()=>{
-        this.setState({
-            selectedTheme:!this.state.selectedTheme,
-        });
-    }
     
     displayCountries=()=>{
+        const {getCurrentTheme,themeObject} = this.props;
         if(this.state.countries.length>0){
-            return <Countries themeObject = {this.themeObject[this.getCurrentTheme()]} countries={this.state.countries} isThemeTrue={this.state.selectedTheme}/>;
+            return <Countries themeObject = {themeObject[getCurrentTheme()]} countries={this.state.countries} />;
         }
         else if((this.state.countries.length===0&&this.state.searchText!=="")){
            return <div>No results found</div> ;
@@ -141,23 +110,23 @@ class CountriesDashboardApp extends React.Component{
     
     componentWillUnmount(){
         this.setState=({
-           selectedRegion:"All",
+            selectedRegion:"All",
             searchText:"",
-            selectedTheme:true,
             countries:'',
             commonFetchData:"", 
         });
     }
     render(){
-        let themeObject = this.themeObject[this.getCurrentTheme()];
-        let themeName=themeObject.themeName;
+        const {getCurrentTheme,changeSelectedTheme,themeObject} = this.props;
+        let themeObjectIt = themeObject[getCurrentTheme()];
+        let themeName=themeObjectIt.themeName;
         return(
-            <Dashboard className={`countries-app ${themeName}`} themeObject={themeObject}>
-                <Header onChangeTheme={this.changeSelectedTheme} 
-                        themeObject={themeObject}
+            <Dashboard className={`countries-app ${themeName}`} themeObject={themeObjectIt}>
+                <Header onChangeTheme={changeSelectedTheme} 
+                        themeObject={themeObjectIt}
                         name={themeName} />
                 <CountriesFilterBar
-                    themeObject={themeObject}
+                    themeObject={themeObjectIt}
                     selectedRegion={this.state.selectedRegion}
                     themeName = {themeName}
                     // searchText={this.state.searchText}
@@ -171,7 +140,7 @@ class CountriesDashboardApp extends React.Component{
     
 }
 
-export {CountriesDashboardApp};
+export default WithCoutries(CountriesDashboardApp);
 
 
 

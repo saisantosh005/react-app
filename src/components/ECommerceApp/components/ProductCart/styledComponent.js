@@ -7,32 +7,13 @@ import {keyframes,css } from "@emotion/core";
 
 const ProductCartStyle = styled.div `${tw`fixed z-10`}`;
 const CartStyle = styled.div`${tw `flex h-screen right-0 top-0 `};
-            width:500px;
-            animation: ${props=>props.isOk===true?
-                css `.7s ease ${keyframes`
-                    0%{
-                        width:0px;
-                    }
-                    100%{
-                        width:500px;
-                    }
-                `}
-                `
-               :
-                css `.7s ease ${keyframes`
-                    0%{
-                        width:500px;
-                        
-                    }
-                    100%{
-                        width:0px;
-                    }
-                `}
-                `
-            };
+            transition:width z-index;
+            transition-duration:.7s;
+            transition-timing-function:ease-in-out;
+            position:fixed;
+            z-index:${props=>props.isOk?"500":"0"};
+            width:${props=>props.isOk?"500px":"0px"};
             `;
-            
-  
 const CrossStyle = styled.div `
             background:#373c54;
             ${tw `flex items-center justify-center text-white h-16 w-16`}`;

@@ -1,3 +1,6 @@
+
+
+
 // import React from 'react';
 import {
     API_INITIAL,
@@ -24,7 +27,7 @@ describe("AuthStore Tests", () => {
     expect(authStore.getUserSignInAPIError).toBe(null);
   });
   
-  it("should render fetching state",()=>{
+  it("should render fetching state",async()=>{
       let onSuccess=jest.fn();
       let onFailure=jest.fn();
       
@@ -34,7 +37,9 @@ describe("AuthStore Tests", () => {
       
       
       authAPI.signInAPI=mockSignInAPI;
-      authStore.userSignIn(1,onSuccess,onFailure);
+      await authStore.userSignIn(1,onSuccess,onFailure);
+        
+      expect(authStore.setGetUserSignInAPIStatus).toBeCalled();
       
       expect(authStore.getUserSignInAPIStatus).toBe(API_FETCHING);
       expect(onSuccess).not.toBeCalled();
@@ -45,7 +50,9 @@ describe("AuthStore Tests", () => {
   it("should render success state",async()=>{
       let onSuccess=jest.fn();
       let onFailure=jest.fn();
-      
+      let setGetUserSignInAPIError=jest.fn();
+      let setGetUserSignInAPIStatus = jest.fn();
+
       const  getPromise=new Promise(function(resolve,reject){
           resolve(getUserSignInRespnse);
       });
@@ -55,6 +62,7 @@ describe("AuthStore Tests", () => {
       authAPI.signInAPI=mockSignInAPI;
       await authStore.userSignIn(1,onSuccess,onFailure);
       
+      expect(authStore.setGetUserSignInAPIStatus).toBeCalled();
       expect(authStore.getUserSignInAPIStatus).toBe(API_SUCCESS);
       expect(onSuccess).toBeCalled();
       expect(onFailure).not.toBeCalled();
@@ -64,26 +72,26 @@ describe("AuthStore Tests", () => {
   it("should render error state",async()=>{
       let onSuccess=jest.fn();
       let onFailure=jest.fn();
+
+        const getPromise=new Promise(function(resolve,reject){
+            reject(new Error("error"));
+        });
       
-      const getPromise=new Promise(function(resolve,reject){
-          reject(new Error("error"));
-      });
+        const mockSignInAPI=jest.fn();
+        mockSignInAPI.mockReturnValue(getPromise);
+        authAPI.signInAPI=mockSignInAPI;
+        await authStore.userSignIn(1,onSuccess,onFailure);
       
-      const mockSignInAPI=jest.fn();
-      mockSignInAPI.mockReturnValue(getPromise);
-      authAPI.signInAPI=mockSignInAPI;
-      await authStore.userSignIn(1,onSuccess,onFailure);
-      
-      expect(authStore.getUserSignInAPIStatus).toBe(API_FAILED);    
-      expect(onSuccess).not.toBeCalled();
-      expect(onFailure).toBeCalled();
-  });
-  it("should test user sign-out",()=>{
-      authStore.userSignOut();
-      expect(authStore.getUserSignInAPIStatus).toBe(API_INITIAL);
-      expect(authStore.getUserSignInAPIError).toBe(null);
-  });
-  
-  
-  
+        expect(authStore.setGetUserSignInAPIStatus()).not.toBeCalled();
+        expect(authStore.getUserSignInAPIStatus).toBe(API_FAILED);    
+        expect(onSuccess).not.toBeCalled();
+        expect(onFailure).toBeCalled();
+        expect(authStore.setGetUserSignInAPIError()).toBeCalled();
+    });
+
+    it("should test user sign-out",()=>{
+        authStore.userSignOut();
+        expect(authStore.getUserSignInAPIStatus).toBe(API_INITIAL);
+        expect(authStore.getUserSignInAPIError).toBe(null);
+    });
 });

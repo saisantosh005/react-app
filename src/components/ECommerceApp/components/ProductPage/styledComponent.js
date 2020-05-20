@@ -3,7 +3,7 @@ import tw  from 'tailwind.macro';
 import {keyframes,css} from '@emotion/core';
 const EcommerceAppStyle = styled.div`
         background:white;
-        ${tw `h-screen w-screen`}`;
+        ${tw ` w-screen`}`;
 const ECommereAPPMainDiv =styled.div`${tw `flex mt-10`}`;
 const SignOutButtonStyle = styled.button`
         border:1px solid black;border-radius:5px;${tw `p-1 ml-3 mt-5`}`;

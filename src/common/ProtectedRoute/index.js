@@ -1,12 +1,15 @@
+import React from 'react';
+import {Redirect,Route}  from 'react-router-dom';
 
+import {getAccessToken} from '../../components/AuthLogin/utils/StorageUtils.js';
 
 const ProtectedRoute = (props)=>{
-    const {ecommerceProductsPath,signInPath} = this.props;
-    if(isLogin()){
-        <Route to={ecommerceProductsPath}/>;
+    const {component:Component,...rest} = props;
+    if(getAccessToken()!==undefined){
+        return <Route component={Component} {...rest} />;
     }
     else{
-        <Redirect to={signInPath}/>;
+        return <Redirect to={"/ecommerce-store/sign-in"}/>;
     }
 };
 

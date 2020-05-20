@@ -1,5 +1,7 @@
-import ProductPage from '../components/ProductPage/';
-// import React from 'react';
-import {Route} from "react-router-dom";
-const routes = <Route path = {'ECommerceApp'} component={ProductPage} />;
-export default routes;
+import React from 'react';
+
+import ProductPage from '../components/ProductPage';
+import {ProtectedRoute} from '../../../common/ProtectedRoute';
+const ecommerceRoute = [<ProtectedRoute key={Math.random()} component = {ProductPage} exact path ={"/ecommerce-store/products"} />];
+
+export {ecommerceRoute};

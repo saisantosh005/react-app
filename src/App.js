@@ -12,7 +12,7 @@ import {CreateToDoList} from './components/toDoList/index.js';
 import {CarsList } from './components/CarsList/carsList.js';
 import {WaterCountApp} from './components/waterCount/waterApp.js';
 import {FormComponents}from './components/formComponents/index.js';
-import {CountriesDashboardApp} from'./components/project/countryDashboard/CountriesDashboardApp.js';
+import CountriesDashboardApp from'./components/project/countryDashboard/CountriesDashboardApp.js';
 import CountryDetails from './components/project/countryDetails/CountryDetails.js';
 import {EmojiGame} from './components/assignment-5/EmojiGame/EmojiGame.js';
 import {CounterApp} from './components/CounterApp/CounterApp';
@@ -37,7 +37,7 @@ import CounterPage from './components/CounterPage/index';
 
 // import routes from './components/ECommerceApp/Routes/';
 
-import ProductPageRoute from './components/ECommerceApp/Routes/ProductPage';
+import {ecommerceRoute} from './components/ECommerceApp/Routes';
 // components/ProductPage';/
 
 
@@ -53,6 +53,9 @@ import stores from './stores';
 import ProductStores from './components/ECommerceApp/ProductStores';
 import {Provider} from 'mobx-react';
 import {route} from './components/AuthLogin/routes';
+
+
+import {PracticeAdvancedConcepts} from './common/routes/first.js';
 
 // import {enableLogging} from'mobx-logger';
 // const config ={
@@ -101,12 +104,11 @@ class App extends React.Component{
             <Provider {...allStores}>
             <Router basename={process.env.PUBLIC_URL}>
             <Switch>
+            
+                {PracticeAdvancedConcepts}
                 <Route exact path="/users" component={UsersPage}/>
                 {route}
-                <Route exact path="/ecommerce-store/products">
-                    <ProductPageRoute />
-                </Route>    
-                
+                {ecommerceRoute}
                 <Route exact path="/counter-page">
                     <CounterPage />
                 </Route>    
@@ -170,7 +172,10 @@ class App extends React.Component{
 }
 
 export default App;
-
+ // <Route exact path="/ecommerce-store/products">
+                //     <ProductPageRoute />
+                // </Route>    
+               
 //
 // <Route exact path="/Login-page">
                 //     <LoginPage />

@@ -8,9 +8,8 @@ import {SubTotalStyle,
 
 @observer
 class SubTotal extends React.Component{
-
     render(){
-        let {total,currencyFormat} =this.props;
+        let {total,symbol} =this.props;
         return(
             <SubTotalStyle>
                 <SubTotalName>

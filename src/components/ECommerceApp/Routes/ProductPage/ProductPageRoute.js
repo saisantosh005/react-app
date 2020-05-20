@@ -30,12 +30,7 @@ class ProductPageRoute extends React.Component{
         //     />
         // );
     }
-    
-    
     render(){
-        if(getAccessToken()===undefined){
-            this.gotToLoginScreen();
-        }
         return(
             <ProductPage gotToLoginScreen = {this.gotToLoginScreen}/>
         );
@@ -52,9 +47,6 @@ export default withRouter(ProductPageRoute);
 
 const ecommerceAppRoute=[
 <ProtectedRout ecommerceProductsPath={ECOMMERCE_APP_PATH} signInPath={SIGN_IN_PATH}/>];
-
 export {ecommerceAppRoute}
-
-
 
 */
