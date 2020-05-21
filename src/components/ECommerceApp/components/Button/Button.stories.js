@@ -1,25 +1,17 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
+import { boolean, number, text, withKnobs } from '@storybook/addon-knobs';
 import {Button} from './Button.js';
+
 
 export default {
   component: Button,
-  title: 'Button',
+  title: 'ECommerceButton/Button',
+  decorators: [withKnobs]
 };
 
-export const text = () => <Button onClick={action('clicked')}>Hello Button</Button>;
+export const normalButton = ()=><Button>hello</Button>;
 
-export const emoji = () => (
-  <Button onClick={action('clicked')}>
-    <span role="img" aria-label="so cool">
-      😀 😎 👍 💯
-    </span>
-    <p>santosh</p>
-  </Button>
-);
-
-
-
-
+export const buttonWithValueProps = () => <Button valueIt={text("XS","XS")}>clear</Button>;
 
 

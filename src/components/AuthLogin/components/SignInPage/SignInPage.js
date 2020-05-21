@@ -8,7 +8,7 @@ import {LoginPageMainDiv,
 } from '../../styledComponents';
 import {observer} from 'mobx-react';
 
-import {getAccessToken} from '../../../../utils/StorageUtils.js';
+// import {getAccessToken} from '../../../../utils/StorageUtils.js';
 
 import cookieconsent  from "cookieconsent";
 

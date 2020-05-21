@@ -46,7 +46,6 @@ class Cell extends React.Component{
                     disabled={this.isClickedOncell}
                     shouldShowHiddenCells={this.shouldShowHiddenCells}
                     fieldWidth={fieldWidth}>
-
                 <CellStyle 
                     theme ={theme}
                     eachModelData = {item}

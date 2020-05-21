@@ -7,12 +7,12 @@ import LoadingView from './LoadingView.js';
 
 export default {
    component: LoadingView,
-   title: 'Common/FailureView'
+   title: 'Common/LoadingView/loadingView'
 }
 
 export const NormalLoading = () => <LoadingView />
 
-export const NormalLoading1 = () => <LoadingView value={"hell"}/>
+export const LoadingWithColor = () => <LoadingView fill={"red"}/>
 
 
 // export const withLoading = () => (

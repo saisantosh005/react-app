@@ -9,6 +9,8 @@ import {observable} from 'mobx';
 @observer
 class GridField extends React.Component{
     timeId;
+    
+    
     renderField=()=>{
         return gridStore.listOfGridModel.map((item)=>
         <Cell  key={Math.random()} theme = {this.props.theme} item={item} />);
