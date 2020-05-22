@@ -13,27 +13,30 @@ import {Pagination} from '../Pagination';
 @observer
 class ProductList  extends React.Component{
     @observable limit=4;
-    
-    @computed get noOfBars() {
-        return (16/this.limit);
-    }
+    @observable count;
+    // @computed get noOfBars() {
+    //     return ;
+    // }
     componentDidMount(){
-        this.getProductStoreData().getProductList(`products?limit=${this.limit}&offset=0`);
+        this.getProductStoreData().getProductList(this.limit);
+        this.count = Math.ceil(this.limit/16);
+        
     }
     incrementLimit=()=>{
         this.limit++;
+        this.doNetWorkCalls();
     }
     decrementLimit=()=>{
         this.limit--;
+        this.doNetWorkCalls();
     }
     
     getProductStoreData=()=>{
         return this.props.productStore;    
     }
     
-    
     doNetWorkCalls=()=>{
-        this.getProductStoreData().getProductList("products?limit=3&offset=0");
+        this.getProductStoreData().getProductList(this.limit);
     }
     
     renderProductList=observer(()=>{
@@ -43,7 +46,6 @@ class ProductList  extends React.Component{
             return <NoDataView/>;
         }
         let arrayIt=[];
-        // console.log("hel",sortedAndFilteredProducts);
         sortedAndFilteredProducts.forEach(item=> {arrayIt.push(<Product onClickAddToCart = {onClickAddToCart}
             key ={item.id} productDetails = {item}/>)});
         return arrayIt;
@@ -55,7 +57,7 @@ class ProductList  extends React.Component{
         return(
             <ProductBodyDivStyle>
                 <Header productStore={this.props.productStore}/>
-                <Pagination value ={{"one":this.limit,"two":this.noOfBars}} incrementLimit={this.incrementLimit}
+                <Pagination value ={{"one":this.limit,"two":this.count}} incrementLimit={this.incrementLimit}
                     decrementLimit={this.decrementLimit} />
                 <ProductListStyle>
                     <LoadingWrapperWithFailure

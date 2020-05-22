@@ -106,10 +106,10 @@ class ProductStore{
     
     @action.bound
     setProductListResponse(apiResponse){
+        this.listOfProducts=[];
         apiResponse.products.forEach((item)=>{
             item.quantity = 0;
             this.listOfProducts.set(item.id,new ProductModel(item));
-            console.log(this.listOfProducts);
         });
     }
     

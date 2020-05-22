@@ -11,10 +11,10 @@ class ProductService{
         });
     }
     getProductAPI(input){
+        alert(input);
         return networkCallWithApisauce(
             this.api,
-            input,
-            
+            `products?limit=${input}&offset=0`,
             {},
             apiMethods.get);
     }
