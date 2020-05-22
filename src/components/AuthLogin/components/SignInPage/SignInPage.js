@@ -1,4 +1,6 @@
 import React from 'react';
+import {observer} from 'mobx-react';
+import {SignInButton} from './SignInButton.js';
 import {LoginPageMainDiv,
         LoginBoxStyle,
         UserNameStyle,
@@ -6,12 +8,10 @@ import {LoginPageMainDiv,
         SignInButtonStyle,SignInNameStyled,
         ErrorMessage
 } from '../../styledComponents';
-import {observer} from 'mobx-react';
 
 // import {getAccessToken} from '../../../../utils/StorageUtils.js';
 
 import cookieconsent  from "cookieconsent";
-
 
 window.cookieconsent.initialise({
   "palette": {
@@ -56,13 +56,10 @@ class SignInPage extends React.Component{
                         type="Password"
                         placeholder="Password"
                     />
-                    <SignInButtonStyle 
-                        disabled = {disabled}
-                        data-testid='sign-in-button'
-                        type="submit"
-                        onClick={onSubmit}>
-                            Sign In
-                    </SignInButtonStyle>
+                    <SignInButton disabled={disabled} 
+                        testid="sign-in-button" 
+                        type ={"submit"}
+                        onClick={onSubmit} label={"Sign In"}/>
                     {errorMessage!==""?
                         <ErrorMessage>
                             {errorMessage}
@@ -74,5 +71,13 @@ class SignInPage extends React.Component{
     }
 }
 
+// <SignInButtonStyle 
+                    //     disabled = {disabled}
+                    //     data-testid='sign-in-button'
+                    //     type="submit"
+                    //     onClick={onSubmit}>
+                    //         Sign In
+                    // </SignInButtonStyle>
+                    
 
 export  {SignInPage};

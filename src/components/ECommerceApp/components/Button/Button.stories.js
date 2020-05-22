@@ -10,7 +10,7 @@ export default {
   decorators: [withKnobs]
 };
 
-export const normalButton = ()=><Button>hello</Button>;
+export const normalSizeButton = ()=><Button>hello</Button>;
 
 export const buttonWithValueProps = () => <Button valueIt={text("XS","XS")}>clear</Button>;
 

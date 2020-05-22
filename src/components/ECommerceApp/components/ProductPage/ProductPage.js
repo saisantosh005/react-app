@@ -13,9 +13,9 @@ import {EcommerceAppStyle,
 import {SizeFilter}  from '../SizeFilter';
 import {ProductList} from '../ProductList';
 import {ProductCart} from '../ProductCart';
-import {Toast}     from '../Toast';
+// import {Toast}     from '../Toast';
 import {authStore} from '../../../AuthLogin/stores';
-import {getAccessToken,clearUserSession} from '../../../AuthLogin/utils/StorageUtils.js';
+import {getAccessToken} from '../../../AuthLogin/utils/StorageUtils.js';
 
 @inject("productStore")
 @observer
@@ -35,7 +35,6 @@ class ProductPage extends React.Component{
         const {history}=this.props;
         history.replace('/ecommerce-store/sign-in');
         authStore.userSignOut();
-        // return null;
         return(
             <Redirect
                 to={{

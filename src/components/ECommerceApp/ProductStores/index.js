@@ -1,4 +1,4 @@
-import ProductStore from './ProductStore';
+import ProductStore from './PaginationStore.js';
 import ProductService from '../Service/ProductService';
 
 import CartStore from './CartStore';

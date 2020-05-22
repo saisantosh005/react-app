@@ -6,7 +6,7 @@ import {Cell} from './Cell.js';
 
 export default {
   component: Cell,
-  title: 'GridGame/Button',
+  title: 'GridGame/cellButton',
   decorators: [withKnobs]
 };
 
@@ -15,3 +15,5 @@ const defaultValue = {
   };
 const theme="dark";
 export const cell = ()=><Cell item={object("value",defaultValue)} theme={text("dark",theme)}/>;
+
+export const cellWithOutClick = ()=><Cell item={object("value",defaultValue)} theme={text("dark",theme)}/>;

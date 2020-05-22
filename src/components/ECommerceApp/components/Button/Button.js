@@ -9,11 +9,9 @@ class Button extends React.Component{
     
     @action.bound
     changeValue(event){
-        console.log("ok");
-        // const {onSelectSizeIt} = this.props;
+        const {onSelectSizeIt} = this.props;
         this.isClicked=!this.isClicked;
-        console.log(this.isClicked);
-        // onSelectSizeIt(event.target.value);
+        onSelectSizeIt(event.target.value);
     }
     
     render(){
@@ -27,22 +25,3 @@ class Button extends React.Component{
 }
 
 export {Button};
-
-
-// import React from 'react';
-
-// class Button extends React.Component{
-//     here = ()=>{
-        
-//     }
-    
-//     render(){   
-//         const {children} = this.props;
-//         return(
-//         <button onClick={this.here} >
-//         {children[1]}
-//         </button>);
-//     }
-// }
-
-// export {Button};
