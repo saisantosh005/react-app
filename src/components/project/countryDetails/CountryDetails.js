@@ -4,7 +4,7 @@ import {Button} from '../buttons/Button.js';
 import {Header} from '../header/Header.js';
 import {MdArrowBack} from 'react-icons/md';
 import {CountryDetailsDiv,Image,TheoryData,AllSpanTags,EachCountryDetails,CardDataDivWithTitle} from './detailsOfCountry.js';
-import {ButtonSection} from '../buttons/eachButton.js';
+// import {ButtonSection} from '../buttons/Button.js';
 import {BackButtonSection,DashboardButton,BackButton} from './backButtonSection';
 /* global fetch*/
 

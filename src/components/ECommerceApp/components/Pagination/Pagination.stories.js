@@ -9,11 +9,10 @@ export default{
     decorators:[withKnobs],
 };
 
-
-// const label = "arrya";
-// const defaultArray =[1,2,3,4];
-// const seperator = ",";
-// const groupId = "here";
-// const arrayIt = ;
-
-export const paginationUI = ()=><Pagination value ={object("object",{"one":1,"two":2})}/>;
+export const paginationUI = ()=>{
+        const productStore = {noOfPages:2,pageNumber:4};
+        
+        return <Pagination 
+            value ={object("object",{"one":1,"two":2})} 
+            productStore={productStore}
+        />}

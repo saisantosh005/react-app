@@ -15,6 +15,25 @@ class ProductStore{
     @observable sizeFilter;
     productService;
     
+    @observable pageNumber=1;
+    @observable noOfPages=0;
+    limit=3;
+    @observable offset = 0;
+    
+    @action.bound
+    incrementLimit(){
+        this.offset=this.offset+this.limit;
+        this.pageNumber++;
+        this.getProductList();
+    }
+    
+    @action.bound
+    decrementLimit(){
+        this.offset=this.offset-this.limit;
+        this.pageNumber--;
+        this.getProductList();
+    }
+    
     constructor(productService){
         this.productService = productService;
         this.init();
@@ -37,7 +56,6 @@ class ProductStore{
     
     @computed get products(){
         if(this.sizeFilter.length!==0){
-            // let array = new Map();
             let array = [];
             this.listOfProducts.forEach((value,key,map)=>{
                 if(this.isProductPresent(value.availableSizes)){
@@ -106,7 +124,9 @@ class ProductStore{
     
     @action.bound
     setProductListResponse(apiResponse){
-        this.listOfProducts=[];
+        this.noOfPages = Math.ceil(apiResponse.total/(this.limit));
+        
+        this.listOfProducts=new Map();
         apiResponse.products.forEach((item)=>{
             item.quantity = 0;
             this.listOfProducts.set(item.id,new ProductModel(item));
@@ -125,8 +145,8 @@ class ProductStore{
     }
     
     @action.bound
-    getProductList(input){
-        const productPromise = this.productService.getProductAPI(input);
+    getProductList(){
+        const productPromise = this.productService.getProductAPI(this.limit,this.offset);
         return bindPromiseWithOnSuccess(productPromise)
         .to(this.setProductListAPIStatus,this.setProductListResponse)
         .catch(this.setProductListAPIError);

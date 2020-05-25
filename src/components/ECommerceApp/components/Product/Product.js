@@ -14,10 +14,10 @@ import {Toast}     from '../Toast';
 @inject("cartStore")
 @observer 
 class Product extends React.Component{
-    @observable displayToastMessage=false;
-    valueo
+    // @observable displayToastMessage=false;
+    
     onClickAddToCart=()=>{
-        const {onClickAddToCart}  =this.props;
+        const {onClickAddToCart} =this.props;
         onClickAddToCart(this.props.productDetails);
         this.notifyToast();
     }
@@ -35,14 +35,8 @@ class Product extends React.Component{
             }
         );
     }
-    changeValue =()=>{
-        const {productDetails}  =this.props;
-        const {price}=productDetails;
-        this.valueo = (price + "").split(".")[1];
-        // console.log(valueo,"o");
-    }
+    
     render(){
-        
         const {productDetails}  =this.props;
         const {image,id,
                 availableSizes,currencyFormat,
@@ -53,12 +47,11 @@ class Product extends React.Component{
                 style,
                 title,
         } = productDetails;
-        this.changeValue();
-        
+    
         return(
             <ProductMainDivStyle>
                 {isFreeShipping&&<FreeMainStyle>
-                <FreeShippingDivStyle>Free shipping</FreeShippingDivStyle>
+                    <FreeShippingDivStyle data-testid="freeShipping">Free shipping</FreeShippingDivStyle>
                 </FreeMainStyle>}
                 <Image src={image} alt="Images" />
                 <ProductDataStyle>
@@ -66,7 +59,6 @@ class Product extends React.Component{
                     <PriceDivStyle>
                         {currencyFormat} 
                         <BoldIt> {price.toFixed(0)}</BoldIt>.{(price + "").split(".")[1]}
-                        
                     </PriceDivStyle>
                     <InstallmentsDiv>or {installments} * {currencyFormat} {(price/installments).toFixed(2)}</InstallmentsDiv>
                 </ProductDataStyle>

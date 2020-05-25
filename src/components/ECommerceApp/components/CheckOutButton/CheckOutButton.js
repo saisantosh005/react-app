@@ -3,8 +3,8 @@ import {CheckOutButtonStyle} from './styledComponent.js';
 
 class CheckOutButton extends React.Component{
     
-    onClear(){
-        const {clearCart,}  = this.props;
+    onClickClearCart=()=>{
+        const {clearCart}  = this.props;
         alert("Thank you for shopping with us 😊.Your products will be delivered in 3 days to the address mentioned in your profile.");
         clearCart();
     }
@@ -13,7 +13,7 @@ class CheckOutButton extends React.Component{
     render(){
         const {isDisabled}  = this.props;
         return(
-            <CheckOutButtonStyle onClick={this.clearCart} disabled={isDisabled}>
+            <CheckOutButtonStyle data-testid="checkOutButton"  onClick={this.onClickClearCart} disabled={isDisabled}>
                 CheckOut
             </CheckOutButtonStyle>
         );

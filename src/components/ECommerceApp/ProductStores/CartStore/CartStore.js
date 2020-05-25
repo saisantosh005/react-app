@@ -12,12 +12,14 @@ class CartStore{
     @action.bound
     onClickAddToCart(input){
         let count=0;
+        
         this.cartProductList.forEach((item,index)=>{
             if(item.id===input.id){
                 count=1;
                 this.cartProductList[index].incrementQuantity();
             }
         });
+        
         if(count===0){
             const cartObject = {
                 image:input.image,

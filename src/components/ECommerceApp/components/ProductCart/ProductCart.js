@@ -39,7 +39,6 @@ class ProductCart extends React.Component{
         }
         return(
             <ProductCartStyle>
-                
                     <CartStyle width = {this.width} isOk={this.shouldDisplayCart}>
                         <CrossStyle onClick={this.hideCart} >X</CrossStyle>
                         <CartDataStyle>
@@ -68,8 +67,6 @@ class ProductCart extends React.Component{
                         <FiShoppingCart />
                         <NoOfItemsStyle>{noOfProductInCart}</NoOfItemsStyle>
                     </CartButtonStyle>
-                
-                
             </ProductCartStyle>
         );
     }

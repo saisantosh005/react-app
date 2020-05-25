@@ -12,23 +12,9 @@ import {Pagination} from '../Pagination';
 @inject("productStore","cartStore")
 @observer
 class ProductList  extends React.Component{
-    @observable limit=4;
-    @observable count;
-    // @computed get noOfBars() {
-    //     return ;
-    // }
+    
     componentDidMount(){
-        this.getProductStoreData().getProductList(this.limit);
-        this.count = Math.ceil(this.limit/16);
-        
-    }
-    incrementLimit=()=>{
-        this.limit++;
-        this.doNetWorkCalls();
-    }
-    decrementLimit=()=>{
-        this.limit--;
-        this.doNetWorkCalls();
+        this.getProductStoreData().getProductList();
     }
     
     getProductStoreData=()=>{
@@ -36,7 +22,7 @@ class ProductList  extends React.Component{
     }
     
     doNetWorkCalls=()=>{
-        this.getProductStoreData().getProductList(this.limit);
+        this.getProductStoreData().getProductList();
     }
     
     renderProductList=observer(()=>{
@@ -48,18 +34,31 @@ class ProductList  extends React.Component{
         let arrayIt=[];
         sortedAndFilteredProducts.forEach(item=> {arrayIt.push(<Product onClickAddToCart = {onClickAddToCart}
             key ={item.id} productDetails = {item}/>)});
-        return arrayIt;
+            if(arrayIt.length>0){
+                return arrayIt;
+            }
+            else{
+                return "No products of your request";
+            }
+        
     });
     
     
     render(){
-        const {getProductListAPIError,getProductListAPIStatus} = this.getProductStoreData();
+        const {
+            getProductListAPIError,
+            getProductListAPIStatus,
+            noOfPages,
+            pageNumber,
+            incrementLimit,
+            decrementLimit,
+        } = this.getProductStoreData();
         return(
             <ProductBodyDivStyle>
                 <Header productStore={this.props.productStore}/>
-                <Pagination value ={{"one":this.limit,"two":this.count}} incrementLimit={this.incrementLimit}
-                    decrementLimit={this.decrementLimit} />
-                <ProductListStyle>
+                <Pagination data-testid="pagination" value ={{"one":pageNumber,"two":noOfPages}} incrementLimit={incrementLimit}
+                    decrementLimit={decrementLimit} />
+                <ProductListStyle data-testid="productDetailsDiv">
                     <LoadingWrapperWithFailure
                         apiStatus = {getProductListAPIStatus}
                         apiError = {getProductListAPIError}
@@ -71,7 +70,3 @@ class ProductList  extends React.Component{
     }
 }
 export {ProductList};
-
-        // alert(listOfProducts.get(1));
-        // console.log(listOfProducts);
-        // return sortedAndFilteredProducts.map((item,index)=><Product onClickAddToCart = {onClickAddToCart} key={item.id} productDetails = {item}/>);

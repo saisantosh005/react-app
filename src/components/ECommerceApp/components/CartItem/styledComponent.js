@@ -13,7 +13,7 @@ const CartTitleAndCrossStyle =styled.div`${tw `flex justify-between`}`;
 
 const Title=styled.div `color:white;`;
 
-const Cross = styled.div``;
+const Cross = styled.button``;
 
 const ProductModelStyle  = styled.div`font-size:13px;${tw `flex justify-between`}`;
 const PriceStyle=styled.div`color:gold;font-size:16px;`;

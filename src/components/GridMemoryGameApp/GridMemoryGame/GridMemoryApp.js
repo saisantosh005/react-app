@@ -42,7 +42,7 @@ class GridMemoryGame extends React.Component{
             <GridGameAppStyle  theme = {themeStore.object[themeStore.selectedTheme]}>
                 <GridGameMainStyle>
                     <GridHeader />
-                    {gridStore.isGameComleted===true?<Result/>:<GridField theme = {themeStore.selectedTheme} />}
+                    {gridStore.isGameComleted===true?<Result />:<GridField theme = {themeStore.selectedTheme} />}
                 </GridGameMainStyle>
             </GridGameAppStyle>);
     }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {EachButton} from './eachButton.js';
+import {EachButton} from './styledComponent.js';
 class Button extends React.Component{
     
     render(){

@@ -18,7 +18,7 @@ class Button extends React.Component{
         const {valueIt} = this.props;
         
         return(
-            <ButtonStyle onClick={this.changeValue} value={valueIt} isClicked={this.isClicked}>
+            <ButtonStyle data-testid="Button-id" onClick={this.changeValue} value={valueIt} isClicked={this.isClicked}>
                 {valueIt}
             </ButtonStyle>);
     }

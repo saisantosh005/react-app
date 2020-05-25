@@ -29,7 +29,7 @@ class CartItem extends React.Component{
                 <ProductImageStyle src={cartItem.image}/>
                 <CartItemDetailsDiv>
                     <CartTitleAndCrossStyle>
-                        <Title>
+                        <Title data-testid="cartItemTitle">
                             {cartItem.title}
                         </Title>
                         <Cross onClick={this.onRemoveCartItem}>x</Cross>
@@ -38,7 +38,7 @@ class CartItem extends React.Component{
                        {cartItem.style}
                        <PriceStyle>{cartItem.currencyFormat} {cartItem.price}</PriceStyle>
                     </ProductModelStyle>
-                    <QuantityStyle>Quantity: 
+                    <QuantityStyle data-testid="Quantity">Quantity: 
                     {cartItem.quantity}</QuantityStyle>
                 </CartItemDetailsDiv>
             </CartItemMainDivStyle>

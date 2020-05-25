@@ -10,11 +10,12 @@ class ProductService{
             baseURL:"https://9ba0cd3ggi.execute-api.ap-south-1.amazonaws.com/ecommerce/"
         });
     }
-    getProductAPI(input){
-        alert(input);
+    
+    getProductAPI=(input,offsetValue)=>{
+        // const endPoint = `products?limit=3&offset=5`;
         return networkCallWithApisauce(
             this.api,
-            `products?limit=${input}&offset=0`,
+            `products?limit=${input}&offset=${offsetValue}`,
             {},
             apiMethods.get);
     }

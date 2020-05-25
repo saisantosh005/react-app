@@ -10,7 +10,7 @@ import {SelectSizeDivStyle} from './styledComponent.js';
 class SizeFilter  extends React.Component{
     @observable size=["XS","S","M","L","XL","XXL"];
     render(){
-        let {onSelectSize} =this.props.productStore;
+        let {onSelectSize} = this.props.productStore;
         const ButtonArray = this.size.map((item)=><Button key={item} onSelectSizeIt={onSelectSize} valueIt={item}/>);
         return (
             <SelectSizeDivStyle>
