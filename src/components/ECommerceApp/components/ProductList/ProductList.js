@@ -40,7 +40,6 @@ class ProductList  extends React.Component{
             else{
                 return "No products of your request";
             }
-        
     });
     
     

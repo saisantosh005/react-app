@@ -3,11 +3,10 @@ import {API_INITIAL} from '@ib/api-constants';
 import {bindPromiseWithOnSuccess} from '@ib/mobx-promise';
 import {clearUserSession} from '../../utils/StorageUtils.js';
 
-
 class AuthStore{
     @observable getUserSignInAPIStatus;
     @observable getUserSignInAPIError;
-    // @observable 
+
     authAPIservice;
     
     access_token;

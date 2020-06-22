@@ -119,7 +119,7 @@ class App extends React.Component{
                     <CarsList />
                 </Route>
                 <Route path="/Practice">
-                    <A />
+                    <A/>
                 </Route>
                 
                 <Route path="/CreateToDoList">

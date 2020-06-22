@@ -47,7 +47,6 @@ class TodoStore{
     }
     
     @computed get getActiveTodoCount(){
-        console.log(this.listOfTodos.length);
         return this.listOfTodos.length;
     }
 
